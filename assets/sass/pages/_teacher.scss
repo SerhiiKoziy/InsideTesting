@@ -1,0 +1,125 @@
+main#teacher{
+  .page{
+    background: white;
+    display: flex;
+    align-content: stretch;
+    //aside{
+    //  width:15%;
+    //  height:100%;
+    //  overflow: auto;
+    //  box-sizing: border-box;
+    //  border-right: 1px solid rgb(217, 217, 217);
+    //}
+
+    .dashboard{
+     // width:85%;
+      header{
+        display: flex;
+        align-content: stretch;
+
+        .test-controls {
+          border-bottom:2px solid #006ec5;
+          width:30%;
+          box-sizing: border-box;
+          padding:0 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          &>*{
+            //flex-grow:1;
+         //   flex-basis:50%;
+          }
+          h3{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0;
+          }
+          .btn-wr{
+            width:auto;
+            justify-content: center;
+            flex-wrap:nowrap;
+
+          }
+        }
+        .tab-controls{
+
+          width:70%;
+          height: 70px;
+          button{
+
+            & > div >  div {
+              height:70px !important;
+            }
+          }
+        }
+      }
+
+      .table-test2{
+
+
+        .set-btn{
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              width: 80%;
+        }
+
+        .center-text{
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 80%;
+        }
+
+      }
+      .progress{
+        width:70%;
+        box-sizing: border-box;
+        //padding:0 !important;
+        ol{
+         // display: flex;
+          //align-items: flex-start;
+          &.answers{
+            li{
+              box-sizing: border-box;
+              span{
+                width: 100%;
+                display: block;
+              }
+            }
+
+          }
+          li{
+            text-align: center;
+            flex-grow:1;
+
+            width: 140px;
+            min-height: 100px;
+            svg{
+              color:inherit !important;
+            }
+
+            span.num{
+              display: inline-block;
+              width:24px;
+              text-align: center;
+            }
+
+            &.correct {
+              color:green;
+            }
+            &.incorrect {
+              color:red;
+            }
+            //border-right:1px solid rgb(217, 217, 217);
+            //&:last-of-type{
+            //  border:none;
+            //}
+          }
+        }
+      }
+    }
+  }
+}

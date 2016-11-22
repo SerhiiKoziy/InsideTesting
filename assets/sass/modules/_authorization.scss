@@ -1,0 +1,102 @@
+.authorization {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .5);
+  overflow-y: auto;
+  display: flex;
+  z-index: 999;
+  overflow: auto;
+  transition: 0.3s;
+  opacity: 0;
+  pointer-events: none;
+  &.open{
+      opacity: 1;
+      pointer-events: auto;
+  }
+  .authorization-wr{
+      background: #fff;
+    position: relative;
+  }
+  .authorization-content {
+    //@include center();
+    max-width: 505px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: auto;
+    padding: 20px 0;
+    .auth-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 21px;
+      height: 21px;
+      background: url("../images/close-icon.png") no-repeat center center;
+      background-size: contain;
+      cursor: pointer;
+    }
+  }
+  .authorization-bottom {
+    background: $yellow url("../images/auth-bottom.png") no-repeat right top;
+    padding: 35px 65px;
+    p {
+      margin: 20px auto;
+      font: 12px $renault;
+      padding: 0 20px;
+      color: $light-grey;
+    }
+    .authorization-title + input{
+        margin-bottom: 15px;
+    }
+    .accept{
+        padding: 0;
+        text-align: left; 
+        input{
+            float: left;
+            display: block;
+            width: 18px;
+            height: 18px;
+            margin-top: 5px;
+            margin-left: 0;
+        }
+        label{
+            margin-left: 30px;
+            display: block;
+        }
+    }
+  }
+  .authorization-top {
+    background: url("../images/auth-top.png") no-repeat right bottom;
+    padding: 35px 65px 90px;
+  }
+  .authorization-title {
+    font: 20px $renault-b;
+    color: $light-grey;
+    margin-bottom: 25px;
+  }
+  .authorization-social{
+      text-align: center;
+      .fb-login{
+          display: inline-block;
+          width: 58px;
+          height: 86px;
+          margin: 0 8px;
+          background: url('../images/fb-log.png') no-repeat center center;
+          background-size: contain;
+      }
+      .vk-login{
+          @extend .fb-login;
+          background: url('../images/vk-log.png') no-repeat center center;
+      }
+  }
+  .open-popup {
+    overflow: hidden;
+  }
+  .authorization-thx{
+      padding: 35px 65px;
+      background: $yellow;
+    background: $yellow url("../images/auth-bottom.png") no-repeat 140% top;
+  }
+}

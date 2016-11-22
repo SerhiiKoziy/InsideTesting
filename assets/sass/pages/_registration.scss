@@ -1,0 +1,239 @@
+.registration-wr{
+  height: 100%;
+  background-color: white;
+  display: flex;
+
+  .header-name{
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 60px;
+    min-width: 100px;
+    text-align: right;
+    padding: 0 60px 0 0;
+    box-sizing: border-box;
+
+    line-height: 60px;
+    font-size: 2rem;
+    color: #fff;
+    //color: #000; 
+  }
+  .form-wr{
+  //  flex-basis: 70%;
+    position: relative;
+    width: 480px;
+    padding: 60px;
+    box-sizing: border-box;
+    .first-step{
+
+      .forgot-pass{
+        text-align: center;
+        color:#00b3e3;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      &.blur-form{
+        cursor: default;
+        z-index: 100;
+        &:after{
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+
+          background: #fff;
+          opacity: 0.5;
+        }
+      }
+
+    }
+   .box-select-city{
+
+   }
+    form{
+      position: relative;
+
+      width: 100%;
+      .submit-text{
+        position: absolute;
+        left: 100%;
+        bottom: 80px;
+        color: #00A000;
+        width: 100%;
+        padding: 0 10px;
+        &.active{
+          animation: shadow  5s infinite linear;
+        }
+        @keyframes shadow {
+          0% {opacity: 0;}
+          25% {opacity: 1;}
+          75% {opacity: 1;}
+          100% {opacity: 0;}
+        }
+        &.inactive{
+          display: none;
+
+        }
+      }
+      /*&:after{
+        position: absolute;
+        content: "Збережено! Очікуйте наступний крок.";
+        left: 100%;
+        bottom: 80px;
+        color: #00A000;
+        width: 100%;
+        padding: 0 10px;
+      }*/
+
+        .row{
+          display: flex;
+          justify-content: space-between;
+
+          &.first-row{
+            .right{
+
+              .input-box {
+                &:first-child {
+
+                  flex-basis: 100%;
+
+                }
+              }
+            }
+          }
+
+
+
+          .left{
+            flex-basis: 30%;
+            width:30%;
+          }
+          .right{
+            flex-basis: 65%;
+            display: flex;
+            justify-content: space-between;
+            .input-box{
+              &:first-child {
+                //border: 1px solid #dc2f2f;
+                flex-basis: 40%;
+              }
+              flex-basis: 50%;
+
+            }
+          }
+
+        }
+
+      //.btn{
+      //  width: 65%;
+      //  float: right;
+      //}
+    }
+
+
+
+
+
+  }
+  .form-restore{
+    display: flex;
+    width: 100%;
+    .forgot-form{
+      display: flex;
+      width: 100%;
+    .close-forgot-form{
+      position: absolute;
+      right: 60px;
+      top:60px;
+      height: 60px;
+      width: 60px;
+      background: #fff;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+      transition: 0.4s all;
+      &:hover{
+        border:1px solid #ccc;
+
+      }
+      span{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        background: url("../images/close-forgot.svg");
+        background-size: 100%;
+        transform: translate(-50%, -50%);
+      }
+    }
+      .successMessage{
+        p{
+          font-size: 24px;
+          line-height: 36px;
+          color: #fff;
+        }
+      }
+    .form-forgot-wr{
+      position: relative;
+      display: flex;
+      width: 100%;
+      padding: 60px;
+      box-sizing: border-box;
+      background: #00b3e3;
+
+
+      form{
+         max-width: 336px;
+      }
+      h4{
+        color: #fff;
+      }
+      .btn{
+        border:2px solid #fff;
+        color: #fff;
+      }
+      .btn[disabled] {
+        pointer-events: none;
+        opacity: 1;
+        cursor: not-allowed;
+      }
+}}
+
+  }
+  .first-step{
+    .error-holder{
+      color: #f10000;
+      margin: 0 0 10px 0;
+    }
+    .switcher{
+      margin-top:3rem;
+    }
+  }
+  .max-wr{
+    flex-basis: 30%;
+    background-color: #f4f4f4;
+    padding: 60px;
+    box-sizing: border-box;
+    h5{
+      color: #006ec5;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 28px;
+      margin: 0 0 60px 0;
+    }
+    p{
+      margin: 35px 0 0 20px;
+      color: #9b9b9b;
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 24px;
+
+    }
+  }
+}

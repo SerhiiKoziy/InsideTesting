@@ -1,0 +1,25 @@
+input:not([type="checkbox"]){
+    appearance: none;
+    border: none;
+    background: #fff;
+    color: $light-grey;
+    font: 14px $renault;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    width: 100%;
+}
+input[type="submit"]{
+    font: 18px $renault-b;
+    text-transform: uppercase;
+    color: #fff;
+    width: auto;
+    padding: 13px 30px;
+    background: #000;
+    /*background: #000 url("../images/submit-arrow.png") no-repeat 92% center;*/
+    cursor: pointer;
+    transition: .3s;
+    &:hover{
+        /*background: #6a6d71 url("../images/submit-arrow.png") no-repeat 92% center;*/
+        background: #6a6d71;
+    }
+}

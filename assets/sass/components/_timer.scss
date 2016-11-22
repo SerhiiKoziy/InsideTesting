@@ -1,0 +1,38 @@
+.timer{
+    position: fixed;
+    left: 50%;
+top:0;
+    //width: 290px;
+    display: flex;
+    height:60px;
+    justify-content: space-between;
+    transform: translate(-50%);
+    &.runout{
+        justify-content: center;
+        text-align: center;
+    }
+    p{
+        display: flex;
+        align-items: center;
+        text-align: center;
+   //     height: 60px;
+        margin: 0;
+        font-size: 2rem;
+        color: #fff;
+&:first-of-type{
+    padding-right:10px;
+}
+&:last-of-type{
+    min-width:150px;
+}
+        span{
+            color: #00b3e3;
+            //letter-spacing: 1px;
+            //width: 36px;
+            padding: 0 2px;
+            box-sizing: border-box;
+
+
+        }
+    }
+}

@@ -1,0 +1,110 @@
+.result{
+    .content{
+        background-color: $yellow;
+        background-image: url("../images/result-bg.png"), url("../images/noise.png");
+        background-repeat: no-repeat, repeat;
+        background-size: cover, auto;
+        background-position: center 300px,left top;
+    }
+    .result-content{
+        padding-bottom: 220px;
+    }
+    .result-title{
+        text-align: center;
+        h1{
+            font: 94px $renault-b;
+            text-transform: uppercase;
+        }
+        p{
+            font: 54px $renault-b;
+            text-transform: uppercase;
+        }
+    }
+    .result-bottom{
+        position: absolute;
+        bottom: 95px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+    .result-btn{
+        .rate-button,
+        .friend-button{
+            display: inline-block;
+            color: #fff;
+            font: 25px $renault-b;
+            text-transform: uppercase;
+            vertical-align: top;
+            margin-bottom: 15px;
+        }
+        .friend-button{
+            padding: 10px 25px 5px 25px;
+            box-sizing: border-box;
+            background: #6a6d71;
+            transition: 0.3s;
+            white-space: nowrap;
+            & > span{
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .result-friend-btn{
+                display: inline-block;
+                margin-left: 5px;
+                vertical-align: middle;
+                transition: 0.3s;
+                .fb-friend{
+                    background: url("../images/fb-share.png") no-repeat left top;
+                }
+                .vk-friend{
+                    background: url("../images/vk-share.png") no-repeat left top;
+                }
+                a{
+                    display: inline-block;
+                    width: 44px;
+                    height: 44px;
+                    background: #333;
+                    transition: .3s;
+                    background-size: contain!important;
+                    transform: translateZ(0);
+                    &:hover{ 
+                        opacity: .6;
+                    }
+                }
+            }
+        }
+        .rate-button{
+            padding: 18px 65px;
+            background: #000;
+            /*background: #000 url("../images/next-arrow.png") no-repeat 82% center;*/
+            transition: 0.3s;
+            &:hover{
+                background: #6a6d71;
+                /*background: #6a6d71 url("../images/next-arrow.png") no-repeat 82% center;*/
+            }
+        }
+    }
+}
+
+/*.result-share{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    .result-share-btn{
+        margin-left: 15px;
+        a{
+            display: inline-block;
+            width: 44px;
+            height: 44px;
+            margin: 0 6px;
+        }
+        .fb-share{
+            background: url('../images/fb-share.png') no-repeat center center;
+            background-size: contain;
+        }
+        .vk-share{
+            background: url('../images/vk-share.png') no-repeat center center;
+            background-size: contain;
+        }
+    }
+}*/

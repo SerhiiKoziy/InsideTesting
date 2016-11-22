@@ -1,0 +1,64 @@
+.rating{
+    .content{
+        background-color: $yellow;
+        background-image: url("../images/rating-bg.png"), url("../images/noise.png");
+        background-repeat: no-repeat, repeat;
+        background-size: 100% auto, auto;
+        background-position: center bottom,left top;
+    }
+}
+.rating-content{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 260px;
+    padding-top: 15px;
+}
+.rating-item{
+    width: 25%;
+    box-sizing: border-box;
+    padding: 30px;
+}
+.rating-main{
+    padding-left: 0;
+    h1{
+        font: 48px $renault-b;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    p{
+        margin-bottom: 20px;
+    }
+    .descr{
+        font-size: 15px;
+    }
+}
+.rating-item-title{
+    font: 28px $renault-b;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+.rating-table{
+    width: 100%;
+    background: $yellow;
+    font: 20px $renault-b;
+    text-transform: uppercase;
+    th:first-child,
+    td:first-child{
+        padding: 20px 0 20px 20px;
+    }
+    th{
+        background: #909090;
+        color: #fff;
+        &:last-child{
+            text-align: center;
+            padding-right: 5px;
+        }
+    }
+    td:last-child{
+        text-align: center;
+        width: 110px;
+    }
+    tr:nth-child(2n){
+        background: #e3e3e3;
+    }
+}

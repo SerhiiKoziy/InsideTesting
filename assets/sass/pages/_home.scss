@@ -1,0 +1,68 @@
+.frontpage{
+
+    .content{
+        background: url("../images/frontpage-bg.png") no-repeat center center;
+        background-size: cover;
+        padding-top: 180px;
+    }
+
+    .frontpage-content{
+        margin: auto;
+        max-width: 960px;
+    }
+    .frontpage-title{
+        font: 88px $renault-b;
+        color: #fff;
+        text-transform: uppercase;
+        line-height: 1em;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    .frontpage-list{
+        text-align: center;
+        background: url("../images/frontpage-content-bg.png") no-repeat center center;
+        height: 240px;
+        li{
+            display: inline-block;
+            text-align: left;
+            padding: 10px 0 10px 100px;
+            box-sizing: border-box;
+            width: 270px;
+            vertical-align: top;
+            font: 19px $renault-b;
+            color: #fff;
+            text-transform: uppercase;
+            &:first-child{
+                background: url("../images/first.png") no-repeat left center;
+            }
+            &:nth-child(2){
+                background: url("../images/second.png") no-repeat left center;
+                margin-top: 70px;
+            }
+            &:last-child{
+                background: url("../images/third.png") no-repeat left center;
+                margin-top: 50px;
+            }
+        }
+    }
+    .frontpage-button{ 
+        background: $yellow;
+        /*background: $yellow url("../images/white-arrow.png") no-repeat 230px center;*/
+        display: block;
+        width: 175px;
+        text-align: center;
+        color: #000;
+        font-family: $renault-b;
+        text-transform: uppercase;
+        height: 50px;
+        line-height: 50px;
+        margin: 20px auto 0;
+        transition: .3s;
+        &:hover{
+            color: #fff;
+            background: #000;
+            /*background: #000 url("../images/yellow-arrow.png") no-repeat 230px center;*/
+        }
+    }
+
+}

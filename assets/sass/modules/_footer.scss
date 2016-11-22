@@ -1,0 +1,24 @@
+footer#footer{
+  position: absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+  padding: 0 60px;
+  &>p{
+    color: white;
+    margin: 0;
+  }
+  .social{
+
+    li{
+      margin: 0 5px;
+      display: inline-block;
+    }
+  }
+}

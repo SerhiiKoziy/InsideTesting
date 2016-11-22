@@ -1,0 +1,106 @@
+.restore-password{
+  height: 100%;
+  background-color: white;
+  display: flex;
+
+
+  .form-wr{
+  //  flex-basis: 70%;
+    position: relative;
+    width: 480px;
+    padding: 60px;
+    box-sizing: border-box;
+    .first-step{
+
+      .forgot-pass{
+        text-align: center;
+        color:#00b3e3;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+    }
+
+    form{
+      position: relative;
+
+      width: 100%;
+      .submit-text{
+        position: absolute;
+        left: 100%;
+        bottom: 80px;
+        color: #00A000;
+        width: 100%;
+        padding: 0 10px;
+        &.active{
+          animation: shadow  5s infinite linear;
+        }
+        @keyframes shadow {
+          0% {opacity: 0;}
+          25% {opacity: 1;}
+          75% {opacity: 1;}
+          100% {opacity: 0;}
+        }
+        &.inactive{
+          display: none;
+
+        }
+      }
+      /*&:after{
+        position: absolute;
+        content: "Збережено! Очікуйте наступний крок.";
+        left: 100%;
+        bottom: 80px;
+        color: #00A000;
+        width: 100%;
+        padding: 0 10px;
+      }*/
+
+        .row{
+          display: flex;
+          justify-content: space-between;
+
+          &.first-row{
+            .right{
+
+              .input-box {
+                &:first-child {
+
+                  flex-basis: 100%;
+
+                }
+              }
+            }
+          }
+
+
+
+          .left{
+            flex-basis: 30%;
+            width:30%;
+          }
+          .right{
+            flex-basis: 65%;
+            display: flex;
+            justify-content: space-between;
+            .input-box{
+              &:first-child {
+                //border: 1px solid #dc2f2f;
+                flex-basis: 40%;
+              }
+              flex-basis: 50%;
+
+            }
+          }
+
+        }
+
+      //.btn{
+      //  width: 65%;
+      //  float: right;
+      //}
+    }
+  }
+
+
+}

@@ -1,0 +1,155 @@
+@media only screen and (max-height: 700px){
+    .test .options-wr, .quiz-page .options-wr{
+        padding: 20px 0 0 0;
+    }
+
+    .quiz-page .options-wr{
+        overflow-y: auto;
+    }
+    .quiz-page .options-wr form{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+    .test, .quiz-page{
+        overflow: auto;
+        max-height: calc(100% - 100px);
+    }
+    .ques-wr{
+        height: calc(100% - 60px);
+        overflow: hidden;
+    }
+    .account-page .options-wr .tabs-wr .tabs-body{
+        padding: 20px;
+    }
+    main .route-wr{
+        padding: 60px 0 0px;
+    }
+    .page.start-page .bottom-nav {
+        position: absolute;
+    }
+    aside.right-sidebar{
+        z-index: 1;
+    }
+    aside.right-sidebar.opened {
+        height: 100%;
+    }
+    .page.start-page .bottom-nav{
+        bottom: 0px;
+    }
+
+}
+
+@media only screen and (max-width: 1280px) and (min-width: 1024px){
+    html, body {
+        height: 100vh;
+        min-height: 450px;
+    }
+
+    aside.right-sidebar.opened{
+        //height: 100vh;
+        overflow-y: auto;
+    }
+    main .route-wr{
+       // min-height: 500px;
+        padding: 60px 0 0;
+    }
+    .page.start-page .bottom-nav {
+        position: absolute;
+        //bottom: -60px;
+    }
+    .page.start-page{
+        overflow-Y: auto;
+    }
+    .registration-wr{
+       // overflow-Y: auto;
+    }
+    .registration-wr .form-wr{
+        padding: 30px 60px;
+    }
+    .first-step{
+        padding-bottom: 20px;
+    }
+    .page.start-page p {
+        font-size: 21px;
+    }
+    .page.start-page h3 {
+        font-size: 50px;
+        line-height: 50px;
+    }
+    .btn--main {
+        margin: 20px 0 0 0;
+    }
+    .registration-wr .first-step .switcher {
+        margin-top: 1rem;
+    }
+
+}
+@media only screen and (max-width: 769px) {
+
+
+    .on-scene-1 {
+        top: 70px;
+    }
+
+    .login-wr h1 {
+        font-size: 24px;
+        line-height: 32px;
+        margin: 0 0 6% 0;
+    }
+
+    .login-wr .login-box span {
+        font-style: italic;
+        font-size: 12px;
+    }
+
+    footer .social {
+        display: none;
+    }
+
+    footer ul li {
+        display: none;
+    }
+
+    footer .copyright {
+        left: 10px;
+        right: 10px;
+        text-align: center;
+    }
+
+    .login-wr .login-box ul li {
+        margin: 20px 10px 0;
+    }
+
+    .login-wr .box {
+        -moz-transform: translate(0, -10%);
+        -ms-transform: translate(0, -10%);
+        -o-transform: translate(0, -10%);
+        -webkit-transform: translate(0, -10%);
+        transform: translate(0, -10%);
+    }
+
+    .mobile-menu, .mobile-menu-btn {
+        display: block;
+    }
+
+
+    .account-page .options-wr .tabs-wr .tabs-header ul{
+        display: block;
+    }
+    .account-page .options-wr .tabs-wr .tabs-body>div>ul li:nth-child(2n+1){
+        margin: 30px 0 0  0;
+    }
+    .account-page .options-wr .tabs-wr .tabs-body>div>ul li:nth-child(2n){
+        margin: 30px 0 0 0;
+    }
+    .account-page .options-wr .tabs-wr .tabs-body>div>ul li {
+        width: 50%;
+    }
+}
+
+
+@media only screen and (max-width: 700px) and (orientation: landscape) {
+
+}

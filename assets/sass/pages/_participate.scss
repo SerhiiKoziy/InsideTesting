@@ -1,0 +1,270 @@
+.participate {
+	.content {
+		padding: 0;
+		height: 100%;
+		#react-body {
+			height: 100%;
+		}
+		.participate-wr {
+			background-size: cover;
+			min-height: 100%;
+			box-sizing: border-box;
+			padding: 25px 50px 56px;
+			position: relative;
+
+			.panorama {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				overflow: hidden;
+				opacity: 0;
+				transition: opacity 1s 1s;
+
+				&.show {
+					opacity: 1;
+				}
+
+				img {
+					height: 100%;
+					opacity: 0;
+				}
+			}
+
+			.panorama-wr {
+				background-color: #92adca;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				overflow: hidden;
+
+				.arrow {
+					position: absolute;
+					top: 50%;
+					width: 45px;
+					height: 45px;
+					z-index: 10;
+					transform: translate(0, -50%);
+					cursor: pointer;
+					background-image: url('../images/arrows.png');
+					background-repeat: no-repeat;
+					opacity: 0.4;
+					transition: opacity .3s;
+
+					&:hover {
+						opacity: 1;
+					}
+
+					&.next {
+						right: 0;
+						background-position: left bottom;
+					}
+
+					&.prev {
+						left: 0;
+						background-position: right top;
+					}
+				}
+			}
+
+			.radar-wr {
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				top: 70px;
+				right: 50px;
+				background-image: url('../images/360degree_icon-bg.svg');
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 100% 100%;
+
+				.radar {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%,-50%) rotate(0deg);
+					transition: transform 900ms;
+					background-image: url('../images/360degree_icon-pointer.svg');
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: 100% 100%;
+				}
+			}
+		}
+		.map-content {
+			margin-top: 45px;
+			display: inline-block;
+			position: relative;
+			z-index: 99;
+			background: rgba($yellow, 0.9);
+			padding: 15px;
+			.title {
+				font-size: 38px;
+				text-transform: uppercase;
+				/*color: #fff;*/
+				font-family: $renault-b;
+				line-height: 1.2em;
+			}
+			.descr {
+				font-size: 20px;
+				/*color: #fff;*/
+				text-transform: uppercase;
+				font-family: $renault-b;
+				margin-top: 10px;
+				line-height: 1.2em;
+			}
+		}
+		.map-container {
+			width: 470px;
+			/*height: 410px;*/
+			position: absolute;
+			right: 0;
+			bottom: 56px;
+			background: $yellow;
+			box-sizing: border-box;
+			padding: 13px 16px;
+			.title {
+				display: block;
+				text-align: center;
+				text-transform: uppercase;
+				font-family: $renault-b;
+				margin-bottom: 13px;
+			}
+		}
+		.map-wr {
+			background: url('../images/map.png') no-repeat center center;
+			background-size: cover;
+			height: 350px;
+			.zoom-btn {
+				position: absolute;
+				bottom: 0;
+				left: -42px;
+				width: 42px;
+				padding: 5px 0;
+				text-align: center;
+				background: rgba(0, 0, 0, .45);
+				.plus,
+				.minus {
+					display: block;
+					margin: 15px auto;
+					width: 30px;
+					height: 30px;
+					line-height: 30px;
+					color: #fff;
+					font-size: 14px;
+					box-sizing: border-box;
+					border: 2px solid #fff;
+					border-radius: 3px;
+					font-family: $renault-b;
+					cursor: pointer;
+				}
+			}
+		}
+		.result-popup {
+			@extend .authorization;
+			display: block !important;
+			transition: .3s;
+			opacity: 0;
+			pointer-events: none;
+			/*opacity: 1;
+			pointer-events: auto;*/
+			&.open {
+				opacity: 1;
+				pointer-events: auto;
+			}
+			.result-close {
+				@extend .auth-close;
+			}
+			.result-content {
+				@extend .authorization-content;
+				background-color: $yellow !important;
+				background-image: /*url('../images/result-popup.png'),*/ url('../images/noise.png') !important;
+				background-size: /*100% auto,*/ auto !important;
+				background-position: /*center bottom,*/ left top !important;
+				background-repeat: /*no-repeat,*/ repeat !important;
+				max-width: 673px !important;
+				width: 673px;
+				padding: 40px 0;
+				.title {
+					text-transform: uppercase;
+					font-size: 48px;
+					font-family: $renault-b;
+					text-align: center;
+					padding-bottom: 30px;
+					p {
+						font-size: 21px;
+						font-family: $renault;
+						margin-top: 20px;
+					}
+				}
+				.result-btn {
+					padding: 30px 0;
+					input {
+						/*padding-right: 50px;
+						background-position: 85% center;*/
+					}
+				}
+				.map-wrapper {
+					height: 400px;
+					//background: url('../images/map-popup.png') no-repeat center center;
+
+					width: 100%;
+					position: relative;
+
+					transform: translateZ(0);
+					overflow: hidden;
+
+					&:after {
+						content: '';
+						@include abs;
+						background: url(/assets/images/map-overlay2.png) no-repeat center;
+						//background-size:100%;
+					}
+
+					.result-map {
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						width: 900px;
+						height: 600px;
+						transform: scale(0.75) translateZ(0) translate(-50%, -50%);
+						transform-origin: left top;
+						transiton: transform 0s 0.5s;
+						&.scaled {
+							transform: scale(0.749) translateZ(0) translate(-50%, -50%);
+						}
+					}
+				}
+			}
+		}
+		.result-pagination {
+			padding: 0 35px;
+			text-align: right;
+			font: 17px $renault-b;
+		}
+	}
+    .rotate{
+        opacity: 0;
+        pointer-events:none;
+        transition: 0.3s;
+        font-family: $renault-b;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 112px;
+        background: $yellow;
+        z-index: 9999;
+        p{
+            @include center();
+            text-align: center;
+            font-size: 24px;
+            margin-top: -25px;
+        }
+    }
+}

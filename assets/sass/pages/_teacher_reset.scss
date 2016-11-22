@@ -1,0 +1,388 @@
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes fadeIn{
+  from {
+   // opacity:0;
+    background: #dadada ;
+  }
+  to {
+   // opacity:1;
+    background: #fff ;
+  }
+}
+
+@keyframes fadeInGreen{
+  from {
+   // opacity:0;
+    background: #dadada ;
+  }
+  to {
+   // opacity:1;
+    background: transparent ;
+  }
+}
+
+
+@keyframes stroke{
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+main#teacher {
+  @import "../reset";
+  .page {
+    background: white;
+    display: flex;
+    align-content: stretch;
+    //aside{
+    //  width:15%;
+    //  height:100%;
+    //  overflow: auto;
+    //  box-sizing: border-box;
+    //  border-right: 1px solid rgb(217, 217, 217);
+    //}
+
+      .dashboard {
+        &>div {
+        &::-webkit-scrollbar {
+          width: 8px;
+
+        }
+
+        &::-webkit-scrollbar-track {
+          -webkit-box-shadow: 0;
+          border-radius: 0px;
+          background: #7cb7f0;
+          -webkit-transition: all 0.3s;
+          cursor: pointer;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border-radius: 0;
+          background: #368ee0;
+          -webkit-box-shadow: 0;
+          cursor: pointer;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background: #2b74ba;
+        }
+
+        &::-webkit-scrollbar-thumb:active {
+          background: #2764a0;
+        }
+        & > div {
+          &:nth-child(2) {
+            overflow: initial !important;
+          }
+        }
+      }
+      .table-test{
+      table-layout: initial !important;
+
+      thead{
+        tr{
+          th{
+            span{
+              width: 140px;
+              display: block;
+            }
+          }
+        }
+      }
+      tbody{
+        tr{
+          td{
+            &>span{
+              width: 140px;
+              display: block;
+            }
+
+          }
+        }
+      }
+    }
+
+      .table-test2{
+        .set-btn{
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 80%;
+          min-width: 0 !important;
+          span{
+            padding: 0 !important;
+          }
+        }
+
+        .center-text{
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 95%;
+          text-align: center;
+          overflow: hidden;
+        }
+      }
+
+      .d-header{
+        justify-content: space-between !important;
+      }
+      width: 100%;
+
+      .toggle-holder{
+        width:150px;
+        margin:0 0 10px;
+        display: flex;
+        justify-content: space-between;
+        .toggle-wr{
+          padding:0 20px;
+        }
+      }
+      .btn-wr{
+        margin:10px 0;
+        text-align: right;
+      }
+      table {
+        td, th, .progress > ol > li {
+          border-right: 1px solid rgb(224, 224, 224) !important;
+          &:last-of-type {
+            border: none;
+          }
+        }
+        th, td {
+          text-align: center !important;
+
+          &.profile-td{
+            position: relative;
+            & > .fader{
+              animation: fadeInGreen   2s linear;
+              position: absolute;
+              top:0;
+              bottom:0;
+              left:0;
+              right:0;
+              //background: #000;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+          &.progress ol li{
+            position: relative;
+            width: 140px;
+            min-height: 100px;
+            ol.answers{
+              li{
+                box-sizing: border-box;
+                white-space: pre-wrap;
+                span{
+                  width: 100%;
+                  display: block;
+                }
+              }
+            }
+            & > .fader{
+              animation: fadeIn 2s linear;
+              position: absolute;
+              top:0;
+              bottom:0;
+              left:0;
+              right:0;
+              //background: #000;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+
+          &.active{
+            background: transparentize(#64FFDA, 0.8) !important;
+          }
+        }
+      }
+
+      // width:85%;
+      header {
+        display: flex;
+        align-content: stretch;
+
+        .test-controls {
+          border-bottom: 2px solid #006ec5;
+          width: 30%;
+          box-sizing: border-box;
+          padding: 0 10px 0 0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          & > * {
+            //flex-grow:1;
+            //   flex-basis:50%;
+
+          }
+          .left{
+            width: 40%;
+          }
+          h3 {
+            font-family:'Roboto';
+            font-size: 14px;
+            letter-spacing: 0px;
+            text-transform: uppercase;
+            font-weight: 500;
+            span {
+
+              display: inline-block;
+            }
+          }
+
+          .timer{
+            display: flex;
+            width:100%;
+
+          }
+
+          .btn-wr {
+            width: 60%;
+            white-space: nowrap;
+            // display: flex;
+            //min-width:50%;
+            &>div{
+              padding: 0 2px;
+              margin: 0 !important;
+            }
+
+          }
+        }
+        .tab-controls {
+
+          width: 70%;
+          height: 70px;
+          //.active {
+          //  background: #00ACC1 !important;
+          //}
+          //.idle {
+          //  background: #4DD0E1 !important;
+          //}
+          button {
+
+            & > div > div {
+              height: 70px !important;
+            }
+          }
+        }
+      }
+
+      .progress {
+        width: 70%;
+        box-sizing: border-box;
+
+        //    height:100% !important;
+        padding: 0 !important;
+        //table-layout: fixed;
+
+
+       & >  ol {
+          display: flex;
+          height: 100%;
+
+          &>li {
+            text-align: center;
+          //  flex:1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            justify-content: center;
+            &>p{
+              width: 140px;
+            }
+
+
+            svg {
+              color: inherit !important;
+
+
+
+            }
+
+            //span.num {
+            //  display: inline-block;
+            //  width: 24px;
+            //  text-align: center;
+            //}
+            .mock-icon {
+              display: inline-block;
+              width: 24px;
+            }
+            &.correct {
+              color: green;
+            }
+            &.incorrect {
+              color: red;
+            }
+            //border-right:1px solid rgb(217, 217, 217);
+            //&:last-of-type{
+            //  border:none;
+            //}
+          }
+         .answers{
+           counter-reset: answer;
+           li{
+             text-align: left;
+             padding:2.5px 5px;
+             &:before{
+               counter-increment: answer;
+               content: counter(answer) ") ";
+             }
+             &.correct {
+               color: green;
+               position: relative;
+               border:1px solid green;
+               &:before{
+
+               }
+             }
+           }
+
+         }
+        }
+
+      }
+      thead{
+        background: transparentize(#000, 0.97);
+      }
+      th.progress{
+        overflow: visible !important ;
+        ol li {
+
+
+          overflow: visible;
+          padding:5px;
+          p{
+            font-size:12px;
+            white-space: pre-wrap;
+            .num{
+              padding-right:3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1280px) and (min-width: 1024px) {
+
+  main#teacher .page .dashboard header .test-controls{
+    width: 80% !important;
+  }
+}

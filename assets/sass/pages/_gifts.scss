@@ -1,0 +1,85 @@
+.gifts{
+    .content{
+        background-color: $yellow;
+        height: auto;
+        padding-bottom: 0;
+    }
+
+    .gifts-content{
+        min-height: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .gifts-left,
+    .gifts-right{
+        flex: 1;
+        width: 50%;
+    }
+    .gifts-left{
+        background-color: #d3d4d3;
+        background-image: url("../images/gifts-bg.png"), url("../images/noise-white.png");
+        background-repeat: no-repeat, repeat;
+        background-size: auto 100%, auto;
+        background-position: right bottom,left top;
+        margin: -51px 0 0 -50px;
+        padding: 50px;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+    .gifts-left-content{
+        width: 430px;
+        padding-top: 50px;
+        h1{
+            font: 48px $renault-b;
+            text-transform: uppercase;
+        }
+        p{
+            text-transform: uppercase;
+            line-height: 1.3em;
+            margin: 20px 0;
+        }
+        .gifs-next{
+            display: inline-block;
+            color: #fff;
+            background: #000;
+            /*background: #000 url("../images/submit-arrow.png") no-repeat 82% center;*/
+            text-transform: uppercase;
+            font-family: $renault-b;
+            padding: 16px 50px;
+            transition: .3s;
+            &:hover{
+                background: #6a6d71;
+                /*background: #6a6d71 url("../images/submit-arrow.png") no-repeat 82% center;*/
+            }
+        }
+    }
+    .gifts-right{
+        display: flex;
+        position: relative;
+        padding-left: 50px;
+        .gifts-img{
+            margin: auto;
+            padding-top: 110px;
+            padding-bottom: 60px;
+            img{
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    }
+    .gifts-right-content{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 210px;
+        h2{
+            font: 46px $renault-b;
+            text-transform: uppercase;
+        }
+        p{
+            text-transform: uppercase;
+            margin: 10px 0;
+            line-height: 1.3em;
+        }
+    }
+}

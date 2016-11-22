@@ -1,0 +1,17 @@
+.pv-container {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.pv-inner {
+  display: inline-block;
+  height: 100%;
+  width: auto;
+  cursor: move;
+}
+
+.pv-inner .pv-pano {
+  height: 100%;
+  width: auto;
+}

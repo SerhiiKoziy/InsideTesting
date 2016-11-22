@@ -1,0 +1,155 @@
+$blue: #00b3e3;
+
+.buy-present{
+
+  padding: 60px;
+  box-sizing: border-box;
+  background: #fff;
+  overflow-y: auto;
+  @include scrollbar2;
+  h3{
+
+  }
+  &>p{
+    margin-bottom: 4rem;
+  }
+  .presents-wr{
+    display: flex;
+    flex-wrap: wrap;
+    .buy-product{
+      width: 49%;
+      display: flex;
+      max-height: 300px;
+      margin: 0 0 50px 0;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+
+      &:nth-child(2n){
+          margin-left: 2%;
+
+      }
+
+      .left-part{
+         width: 50%;
+        img{
+          max-width: 100%;
+        }
+       }
+
+      .right-part{
+        width: 50%;
+        padding: 20px;
+        box-sizing: border-box;
+        .product-name{
+          height: 50px;
+          overflow: auto;
+        }
+        h6{
+          color: #006ec5;
+          font-size: 21px;
+        }
+        &>p{
+          color: #bebebe;
+          margin: 20px 0 50px;
+          font-size: 21px;
+        }
+        .counter{
+          display: flex;
+          justify-content: space-between;
+          height: 50px;
+          p{
+            display: flex;
+            align-items: center;
+            margin: 0;
+            color: #006ec5;
+          }
+          .minus-count{
+            position: relative;
+            width: 50px;
+            background: #f4f4f4;
+            cursor: pointer;
+            transition: 0.4s background;
+            &:hover{
+              background: #eeeded;
+            }
+            span{
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: 16px;
+              height: 10px;
+              background: url("../images/left-count.svg");
+              background-repeat: no-repeat;
+              background-size: 100%;
+              transform: translate(-50%, -50%) rotate(90deg);
+            }
+          }
+          .plus-count{
+            position: relative;
+            width: 50px;
+            background: #f4f4f4;
+            cursor: pointer;
+            transition: 0.4s background;
+            &:hover{
+              background: #eeeded;
+            }
+            span{
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: 16px;
+              height: 10px;
+              background: url("../images/right-count.svg");
+              background-repeat: no-repeat;
+
+              background-size: 100%;
+              transform: translate(-50%, -50%) rotate(-90deg);
+            }
+          }
+        }
+        .btn--main{
+          width: 100%;
+          margin: 20px 0 0 0;
+          border: 2px solid #00b3e3;
+          background: #fff;
+          color: #00b3e3;
+          transition: 0.4s color, 0.4s border, 0.4s background;
+          &:hover{
+            border: 2px solid #02a5d1;
+            background: rgba(0,179,227,0.1);
+            color: #02a5d1;
+          }
+
+        }
+      }
+    }
+
+
+  }
+
+  .agreePage{
+    h3{
+      margin-bottom: 7rem;
+    }
+    .wr-btn{
+      display: flex;
+
+      .btn--white{
+        width: 230px;
+        border: 2px solid #00b3e3;
+      }
+      .btn--main{
+        width: 150px;
+        height: 53px;
+        margin: 0 0 0 15px;
+      }
+    }
+  }
+
+  .thankYouPage{
+    h3{
+      margin-bottom: 7rem;
+    }
+  }
+
+}
