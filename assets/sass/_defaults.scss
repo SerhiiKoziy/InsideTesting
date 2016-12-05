@@ -50,3 +50,11 @@ input{
 .page{
     position: relative;
 }
+.form-wr{
+    .input-box{
+        .rw-list-option{
+            overflow-Y: auto;
+            height: 100%;
+        }
+    }
+}

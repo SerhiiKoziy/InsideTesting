@@ -1,5 +1,7 @@
 @media only screen and (max-width: 1024px) {
-
+    main .route-wr {
+        padding: 60px 0 100px;
+    }
     h5, span {
         font-size: 1.1rem;
     }
@@ -16,8 +18,13 @@
     .registration-sale .form-wr .right-form .input-box{
         width: 100%;
     }
+    .samsung-presentation .presentation-wr .pdf-wr {
+        height: 70%;
+    }
+    .samsung-lesson .tests-wr .btn {
 
-
+        bottom: 120px;
+    }
 }
 @media only screen and (max-width: 1000px) {
     .buy-present .presents-wr .buy-product {

@@ -86,6 +86,33 @@
     }
 
 }
+@media only screen and (max-width: 1024px) {
+    main .route-wr {
+        //padding: 60px 0 100px;
+    }
+    .btn--white{
+        width: 100%;
+    }
+    .page.start-page .samsung-wr{
+        padding: 0;
+    }
+    .account-page .options-wr .tabs-wr .tabs-header ul li p{
+        font-size: 0.8rem;
+    }
+    .account-page .info-wr .info-block .buttons-wr .btn--main span {
+        font-size: 1rem;
+    }
+    .samsung-presentation .presentation-wr .pdf-wr .insidePdfWr nav .pager{
+        flex-wrap: wrap;
+    }
+    .samsung-presentation .presentation-wr .pdf-wr .insidePdfWr nav .pager .previous {
+        padding: 0;
+    }
+    .samsung-presentation .presentation-wr .pdf-wr .insidePdfWr nav .pager li{
+        width: 100%;
+    }
+}
+
 @media only screen and (max-width: 769px) {
 
 

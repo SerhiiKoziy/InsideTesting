@@ -7,7 +7,7 @@ aside.right-sidebar{
 
   background: white;
   box-sizing: border-box;
-  padding: 50px ;
+  padding: 50px 35px 50px 50px;
   opacity:0.2;
   //display: flex;
   transform:translateX(100%);
@@ -17,7 +17,17 @@ aside.right-sidebar{
     opacity:1;
   }
   .first-step{
+    height: 100%;
+    overflow: auto;
+    padding-right: 15px;
+
+    @include scrollbar2;
+
+    .btn--white{
+      margin: 10px auto;
+    }
     &.blur-form{
+      height: auto;
       cursor: default;
       z-index: 100;
       &:after{
@@ -30,6 +40,15 @@ aside.right-sidebar{
 
         background: #fff;
         opacity: 0.5;
+      }
+    }
+
+    .form-wr{
+      height: 0;
+      overflow: hidden;
+      &.opened{
+        height: 100%;
+        overflow: visible;
       }
     }
   }

@@ -39,6 +39,12 @@ $blue: #00b3e3;
           color: #999;
         }
       }
+      .input-box{
+        .rw-list-option{
+          overflow-Y: auto;
+          height: 100%;
+        }
+      }
     }
     .right-form{
       width: 100%;

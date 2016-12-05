@@ -1,0 +1,128 @@
+$blue: #00b3e3;
+
+.samsung-presentation{
+  display: flex;
+
+
+  .presentation-wr{
+      position: relative;
+      flex-basis: 50%;
+      padding: 60px;
+      box-sizing: border-box;
+      .pdf-wr{
+        height: 80%;
+        .insidePdfWr{
+          canvas{
+            width: 100% !important;
+          }
+
+          nav{
+            .pager{
+              display: flex;
+              li{
+
+                &.disabled{
+                  .btn{
+                    cursor: default;
+                    background: #b5b5b5;
+                    &:hover{
+                      background: #b5b5b5;
+                    }
+                  }
+                }
+              }
+              .previous{
+                padding: 0 20px 0 0;
+              }
+              .next{
+
+              }
+            }
+          }
+        }
+      }
+    .btn{
+      &.disabled{
+
+          cursor: default;
+          background: #b5b5b5;
+          &:hover{
+            background: #b5b5b5;
+          }
+
+      }
+    }
+
+      p{
+        &:first-child{
+          font-size: 1.3rem;
+          line-height: 1.125;
+          font-weight: 600;
+        }
+      }
+
+    }
+
+
+
+
+  .notes-wr{
+    flex-basis: 50%;
+    padding: 60px;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+
+    font-family: "SFUIDisplayBlack";
+    .btn--main{
+      width: 180px;
+      margin: 0;
+    }
+    .notesPopup{
+      position: relative;
+      flex-basis: 100%;
+      h5{
+        color: $blue;
+        margin: 0 0 30px 0;
+      }
+      .btn--main{
+        position: absolute;
+        right: 0;
+        width: 53px;
+      }
+
+      .save-btn{
+        background-color: #00b3e3;
+        display: inline-block;
+        padding: 0 10px;
+        box-sizing: border-box;
+        cursor: pointer;
+        span{
+          color: #fff;
+          line-height: 53px;
+        }
+        &:hover {
+          background: #009fca;
+        }
+      }
+      .submit-text{
+        left: 0;
+        padding: 10px 0;
+        color: #00A000;
+        width: 100%;
+        &.active{
+          animation: shadow  5s infinite linear;
+        }
+        @keyframes shadow {
+          0% {opacity: 0;}
+          25% {opacity: 1;}
+          75% {opacity: 1;}
+          100% {opacity: 0;}
+        }
+        &.inactive{
+          display: none;
+
+        }
+      }
+    }
+  }
+}

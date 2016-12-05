@@ -8,11 +8,106 @@
     justify-content: center;
 
   }
+  &.opened{
+    .wr{
+      opacity: 1;
+    }
+  }
   .wr{
     max-width:620px;
     padding: 0 60px;
-  }
+    position: absolute;
+    opacity: 0;
+    transition: 0.4s opacity;
+    &.opened{
 
+      opacity: 1;
+    }
+  }
+  .samsung-wr{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    text-align: left;
+    position: relative;
+    padding: 60px;
+    opacity: 0;
+    transition: 0.4s opacity;
+    z-index: -100;
+    &.opened{
+      opacity: 1;
+      z-index: 0;
+    }
+    h3{
+      width: 100%;
+      margin-bottom: 100px;
+    }
+    &>div{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      ul{
+        display: flex;
+        justify-content: center;
+        li{
+          width: 200px;
+          height: 200px;
+          padding: 30px;
+          margin-right: 40px;
+          background: #00b3e3;
+          cursor: pointer;
+          text-align: center;
+          transition: 0.4s background;
+          box-sizing: border-box;
+          &:hover{
+            background: #009fca;
+
+          }
+          &>span {
+            display: block;
+            margin: 15px auto 15px;
+          }
+            &:nth-child(1) {
+              a{
+                &>span {
+                  display: block;
+                  margin: 15px auto 15px;
+                  width: 30px;
+                  height: 48px;
+                  background: url("../images/phone.svg");
+                }
+              }
+
+            }
+            &:nth-child(2) {
+              &>span {
+                width: 48px;
+                height: 48px;
+                background: url("../images/television.svg");
+              }
+            }
+            &:nth-child(3) {
+              &>span {
+                width: 48px;
+                height: 46px;
+                background: url("../images/home.svg");
+              }
+            }
+
+
+          p{
+            font-family: "SFUIDisplayBlack";
+            text-transform: uppercase;
+            font-size: 19px;
+            line-height: 26px;
+          }
+        }
+      }
+    }
+
+  }
 
   h3{
     color: #006ec5;

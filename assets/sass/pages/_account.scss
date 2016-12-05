@@ -253,6 +253,8 @@ $blue: #00b3e3;
                         position: absolute;
                         width: 100%;
                         max-height: 100%;
+                        padding-right: 20px;
+                        box-sizing: border-box;
                         top:50%;
                         transform: translateY(-50%);
                         color: #006ec5;

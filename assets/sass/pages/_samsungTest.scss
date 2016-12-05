@@ -1,0 +1,137 @@
+$blue: #00b3e3;
+
+.samsung-lesson{
+  display: flex;
+
+
+  .theme-wr{
+      position: relative;
+      flex-basis: 50%;
+      padding: 60px;
+      box-sizing: border-box;
+      p{
+        &:first-child{
+          font-size: 1.3rem;
+          line-height: 1.125;
+          font-weight: 600;
+        }
+      }
+    h3{
+
+    }
+    ul{
+      margin-top: 50px;
+      li{
+        text-transform: uppercase;
+        color: #6b6b6b;
+        font-size: 21px;
+        font-weight: 400;
+        letter-spacing: -0.57px;
+        cursor: pointer;
+        transition: 0.4s color;
+        line-height: 50px;
+        font-weight: 600;
+        &:hover{
+          color: $blue;
+        }
+        &.active{
+          color: #006ec5;
+        }
+        &.completed{
+          cursor: default;
+          text-decoration: line-through;
+          &:hover{
+            color: #6b6b6b;
+          }
+        }
+      }
+    }
+
+    }
+
+
+
+
+  .tests-wr{
+    position: relative;
+    flex-basis: 50%;
+    padding: 60px;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    h3{
+
+    }
+    ul{
+      margin-top: 50px;
+      font-weight: 600;
+      li{
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        background: transparent;
+        border-bottom: 1px solid #e1e3e5;
+        cursor: pointer;
+        transition: 0.4s color;
+        padding: 20px 30px 20px 0;
+        &:nth-last-child{
+          border-bottom: none;
+        }
+        &:hover{
+          span{
+            color: #006ec5;
+          }
+
+        }
+        &.active{
+          .circle{
+            background-color: #7ed321;
+          }
+        }
+        &.completed{
+          cursor: default;
+          &>span{
+            text-decoration: line-through;
+          }
+
+        }
+
+        span{
+          display: block;
+          color: #006ec5;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 21px;
+          transition: 0.4s color;
+        }
+        .circle{
+          position: absolute;
+          right: 0;
+          top:50%;
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+          background-color: #e1e3e5;
+          transform: translate(0, -50%);
+          span{
+            position: absolute;
+            height: 11px;
+            width: 11px;
+
+            left: 50%;
+            top:50%;
+            transform: translate(-50%, -50%);
+            background: url("../images/gl.svg");
+            background-size: 100% 100%;
+          }
+        }
+      }
+    }
+
+    .btn{
+      position: absolute;
+      bottom: 60px;
+      right: 60px;
+    }
+  }
+}
