@@ -96,9 +96,8 @@ export default(
 
 
 
-        <IndexRoute name="index"  component={IndexPage}>
+        <IndexRoute name="index"  component={IndexPage}/>
 
-        </IndexRoute>
     </Route>
 );
 // <Route name="history" path='history' component={UserIsAuthenticated(History)}/>

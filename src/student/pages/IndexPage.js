@@ -69,6 +69,9 @@ export default class IndexPage extends Component {
         console.log('register')
     }
 
+    goToSelectPage(path){
+        this.props.actions.pushRedirect(path)
+    }
 
     onRestoreOn() {
         this.setState({forgotForm:true})
@@ -89,6 +92,7 @@ export default class IndexPage extends Component {
         }else if(this.state.currentTab == 'mobile'){
 
         }
+        const profileIsAuth = this.props.profile.didInvalidate;
         return (
 
             <div className="page index-page start-page">
@@ -152,11 +156,11 @@ export default class IndexPage extends Component {
                                     девайси</p>
                                 </a>
                             </li>
-                            <li onClick={this.samsungTag.bind(this, 'audio')}>
+                            <li onClick={profileIsAuth ? this.samsungTag.bind(this, 'audio') : this.goToSelectPage.bind(this, '/samsungLesson')}>
                                 <span></span>
                                 <p>аудіо-відео</p>
                             </li>
-                            <li onClick={this.samsungTag.bind(this, 'technic')}>
+                            <li onClick={profileIsAuth ? this.samsungTag.bind(this, 'technic') : this.goToSelectPage.bind(this, '/samsungLesson')}>
                                 <span></span>
                                 <p>побутова<br/>
                                     техніка</p>
@@ -178,7 +182,7 @@ export default class IndexPage extends Component {
                             >Samsung + </a>
                         </li>
                         <li>
-                            <a href="#" onClick={::this.showSidebar}>Sales </a>
+                            <span onClick={profileIsAuth ? ::this.showSidebar : this.goToSelectPage.bind(this, '/account') }>Sales </span>
                         </li>
                     </ul>
                 </nav>

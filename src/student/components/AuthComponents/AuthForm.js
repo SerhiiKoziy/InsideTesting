@@ -87,6 +87,7 @@ export default class AuthForm extends Component {
         const { cities, companies} = this.props.dic.data;
         const shopNameValue = this.state.selectShop.name;
 
+
         return (
 
             <div className={`first-step ${forgot === true ? "blur-form": "" }`} >

@@ -220,7 +220,7 @@ class Account extends Component {
 
                     <Link to='/' onlyActiveOnIndex={true} activeClassName='active'>Головна</Link>
                     <Link to='/school' activeClassName='active'>smartschool</Link>
-                    <Link to='/' activeClassName=''>samsung+</Link>
+                    <Link to='/samsungLesson' activeClassName=''>samsung+</Link>
                     <Link to='/' activeClassName='active'>особистий кабінет</Link>
 
                 </nav>

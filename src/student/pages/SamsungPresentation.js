@@ -27,11 +27,13 @@ class SamsungPresentation extends Component {
             submitAnimation: false,
             startTest:false,
             page: 0,
-            pages: 1,
             time: 60,
-            secondsLeft: 3,
+            pages: 1,
+            secondsLeft:0,
             minutes:0,
             seconds:0,
+            addTimer: true,
+            lastSowPage: 1,
         }
         this.onDocumentComplete = this.onDocumentComplete.bind(this);
         this.onPageComplete = this.onPageComplete.bind(this);
@@ -42,8 +44,22 @@ class SamsungPresentation extends Component {
 
         this.props.actions.getLessonsPlusPLus();
         this.click();
+        this.rightClick();
 
 
+    }
+    rightClick() {
+        if (document.addEventListener) { // IE >= 9; other browsers
+            document.addEventListener('contextmenu', function(e) {
+            alert("Не намагайтесь скопіювати контент презентації"); //here you draw your own menu
+            e.preventDefault();
+        }, false);
+        } else { // IE < 9
+            document.attachEvent('oncontextmenu', function() {
+                alert("Не намагайтесь скопіювати контент презентації");
+                window.event.returnValue = false;
+            });
+        }
     }
     componentWillMount() {
     }
@@ -96,60 +112,54 @@ class SamsungPresentation extends Component {
         this.setState({ page });
     }
     handlePrevious() {
-        this.setState({ page: this.state.page - 1 });
+        this.setState({ page: this.state.page - 1, addTimer:false });
     }
     handleNext() {
 
-        console.log('receiveNextSlide', this.state.page, this.state.pages)
+        console.log('receiveNextSlide', this.state.page, this.state.pages, this.state.addTimer);
         if (this.state.page === (this.state.pages - 1)){ //last page
-
-            if(this.state.startTest){
-                this.setState({ page: this.state.page + 1});
+            if(this.state.startTest || !this.state.addTimer){
+                this.setState({ page: this.state.page + 1, addTimer:true});
             }else{
-                this.setState({startTest:true, page: this.state.page + 1, secondsLeft: 3})
+                this.setState({startTest:true, page: this.state.page + 1, addTimer:true})
             }
-
-
-                this.click();
-
 
         }else{
-            if(this.state.startTest){
-                this.setState({ page: this.state.page + 1});
+            if(this.state.startTest ){
+                this.setState({ page: this.state.page + 1, addTimer:false});
+            }else if(this.state.addTimer && this.state.page == this.state.lastSowPage){
+                this.setState({ page: this.state.page + 1,secondsLeft: 10, addTimer:true,lastSowPage: this.state.lastSowPage + 1});
             }else{
-                this.setState({ page: this.state.page + 1,secondsLeft: 3 });
+                this.setState({ page: this.state.page + 1, addTimer:true });
+
             }
 
-
-            this.click();
-
         }
-        /*setTimeout(()=> {
-            this.click();
-        }, 1000);*/
-
+        this.click();
     }
     renderPagination(page, pages) {
         let previousButton = <li className="previous" onClick={::this.handlePrevious}>
-                                <Button type="main"> Previous
+                                <Button type="main"> Назад
                                 </Button>
                             </li>;
 
-        if (page === 1) {
+        if (page === 1 || this.state.secondsLeft > 0) {
             previousButton = <li className="previous disabled">
-                                <Button type="main"> Previous
+                                <Button type="main"> Назад
                                 </Button>
                             </li>;
         }
 
+
+
         let nextButton = <li className="next" onClick={::this.handleNext}>
-                            <Button type="main"> Next
+                            <Button type="main"> Вперед
                             </Button>
                         </li>;
 
-        if (page === pages || this.state.secondsLeft>0) {
+        if (page === pages || this.state.secondsLeft > 0) {
             nextButton = <li className="next disabled">
-                            <Button type="main"> Next
+                            <Button type="main"> Вперед
                             </Button>
                         </li>;
         }
@@ -169,10 +179,11 @@ class SamsungPresentation extends Component {
     //timer
     click(){
         console.log('this.state.secondsLeft')
-        if (this.state.secondsLeft > 0) {
+        if (this.state.addTimer ) {
+            console.log('this.state.secondsLeft22', this.state.secondsLeft)
             this.tick();
             this.setState({
-                secondsLeft: this.state.secondsLeft,
+                //secondsLeft: 3,
                 showTimer:true
             });
             if(!this.interval){
@@ -270,7 +281,9 @@ class SamsungPresentation extends Component {
                                 {/*pdfContainer*/}
 
                                 <div className="insidePdfWr">
-                                    <PDF file="/Content/Entities/LessonInfo/32/ua/presentation.pdf"
+                                    <PDF
+                                        file="/Content/Entities/LessonInfo/32/ua/presentation.pdf"
+                                         //file={presentationUrl}
                                          onDocumentComplete={this.onDocumentComplete}
                                          onPageComplete={this.onPageComplete}
                                          page={this.state.page} />
