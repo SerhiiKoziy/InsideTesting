@@ -128,7 +128,7 @@ class SamsungPresentation extends Component {
             if(this.state.startTest ){
                 this.setState({ page: this.state.page + 1, addTimer:false});
             }else if(this.state.addTimer && this.state.page == this.state.lastSowPage){
-                this.setState({ page: this.state.page + 1,secondsLeft: 10, addTimer:true,lastSowPage: this.state.lastSowPage + 1});
+                this.setState({ page: this.state.page + 1,secondsLeft: 60, addTimer:true,lastSowPage: this.state.lastSowPage + 1});
             }else{
                 this.setState({ page: this.state.page + 1, addTimer:true });
 
@@ -282,8 +282,8 @@ class SamsungPresentation extends Component {
 
                                 <div className="insidePdfWr">
                                     <PDF
-                                        file="/Content/Entities/LessonInfo/32/ua/presentation.pdf"
-                                         //file={presentationUrl}
+                                        //file="/Content/Entities/LessonInfo/32/ua/presentation.pdf"
+                                         file={presentationUrl}
                                          onDocumentComplete={this.onDocumentComplete}
                                          onPageComplete={this.onPageComplete}
                                          page={this.state.page} />

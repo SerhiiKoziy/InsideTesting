@@ -50,6 +50,7 @@ export default class IndexPage extends Component {
             samsungPlus:false,
             currentTab:data
         });
+        //this.props.actions.receiveProfile('registerIndexPage')
     }
 
 
@@ -64,13 +65,14 @@ export default class IndexPage extends Component {
     }
     showRegister(){
         this.setState({
-            authType:'register'
+            authType:'registerIndexPage'
         });
-        console.log('register')
+        console.log('registerIndexPage')
     }
 
     goToSelectPage(path){
-        this.props.actions.pushRedirect(path)
+        this.props.actions.pushRedirect(path);
+
     }
 
     onRestoreOn() {

@@ -85,8 +85,8 @@ export default(
         <Route name="samsungPresentation" path="samsungPresentation" component={presentationLoaded(SamsungPresentation)} />
 
 
-        <Route name="account" path='account' component={Account}>
-        </Route>
+
+        <Route name="account" path='account' component={Account}/>
         <Route name="present" path='present' component={BuyPresent}/>
         <Route name="registrationSale" path='registrationSale' component={RegistrationSale}/>
         <Route name="restore" /*path="restore"*/ path="restore/:uid" component={RestorePassword} />

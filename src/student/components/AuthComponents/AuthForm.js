@@ -92,7 +92,7 @@ export default class AuthForm extends Component {
 
             <div className={`first-step ${forgot === true ? "blur-form": "" }`} >
                 {
-                    loginType == 'login' ? (
+                    loginType == 'login' && (
                             <Login title="вхід"
                                    description=""
                                    onSubmit={::this.submitLogin}
@@ -121,8 +121,11 @@ export default class AuthForm extends Component {
 
                             </Login>
 
-                    ) :
-                        (
+                    )
+                }
+                    {
+                        loginType == 'register' && (
+
                             <Register title="Реєстрація"
                                       description=""
                                       buttonText="Зареєструватися"
@@ -131,7 +134,7 @@ export default class AuthForm extends Component {
                                       key="step2">
 
 
-                                      <div className={`form-wr ${this.state.regPage == 1 ? 'opened' : ''}`}>
+                                      <div className="">
                                             <Field name="name" type="text" component={renderTextField} placeholder="Имя"/>
 
                                             <Field name="email" type="text" component={renderTextField}
@@ -141,247 +144,283 @@ export default class AuthForm extends Component {
                                             <Field name="repeatPassword" type="password" component={renderTextField}
                                                    placeholder="Підтвердити пароль"/>
                                       </div>
-                                    <div className={`form-wr ${this.state.regPage == 2 ? 'opened' : ''}`}>
-                                        <Field name="position"
-                                               type="text"
-                                               component={renderTextField}
-                                               placeholder="Посада"/>
-                                        {/*  samsungCity */}
-                                        <div>
-                                            {
-                                                this.state.isCityNotInList == false && (
-                                                    <Field
-                                                        name="cityId"
-                                                        component={renderDropdownList}
-                                                        data={cities}
-                                                        valueField="id"
-                                                        textField="name"
-                                                        placeholder="Оберіть місто"/>
 
-                                                )
-                                            }
-                                            {
-                                                this.state.isCityNotInList == true && (
-                                                    <Field
-                                                        name="cityOther"
-                                                        component={renderTextField}
-                                                        type="text"
-                                                        placeholder="Оберіть місто"/>
-                                                )
-                                            }
+                                    {
+                                        !!user.errorRegister && (
 
-                                            <div className="box-select-city">
-                                                <CheckBox name="samsungCity"
-                                                          defaultChecked={this.state.isCityNotInList}
-                                                          onChange={()=> {
-                                                              this.setState({
-                                                                  isCityNotInList: !this.state.isCityNotInList,
-                                                                  hasShopChecked: !this.state.hasShopChecked
-                                                              })
-                                                          }}
-                                                          answerId = "fourth"
-                                                          label="Необхідна адреса відсутня"
-                                                          type="checkbox"
-
-                                                />
+                                            <div className="error-holder">
+                                                {user.errorRegister}
                                             </div>
-                                        </div>
-
-
-                                        {/*  COMPANY   */}
-                                        {/*  <Field
-                                         name="companyId"
-                                         component={renderDropdownList}
-                                         data={companies}
-                                         defaultValue={[]}
-                                         valueField="id"
-                                         textField="name"
-                                         placeholder="Оберіть компанію"
-                                         />   */}
-                                        <div>
-                                            {
-                                                this.state.hasCompanyChecked == false && (
-
-                                                    <Field
-                                                        name="companyName"
-                                                        component={renderDropdownListSaveChange}
-                                                        data={companies}
-                                                        valueField="id"
-                                                        textField="name"
-                                                        placeholder="Оберіть назву магазину"
-                                                        valueCurrent={shopNameValue}
-                                                        onChange={value => this.setState({selectShop: value})}
-                                                        //onChange={::this.saveShop}
-                                                    />
-                                                )
-                                            }
-                                            {
-                                                this.state.hasCompanyChecked == true && (
-                                                    <Field
-                                                        name="companyOther"
-                                                        component={renderTextField}
-
-                                                        valueField="id"
-                                                        type="text"
-                                                        textField="name"
-
-                                                        placeholder="Оберіть компанію"/>
-                                                )
-                                            }
-                                            <div className="box-select-city">
-                                                <CheckBox name="samsungCompany"
-                                                          value={this.state.hasCompanyChecked}
-                                                          onChange={()=> {
-                                                              this.setState({
-                                                                  hasCompanyChecked: !this.state.hasCompanyChecked
-                                                              })
-                                                          }}
-                                                          answerId = "first"
-                                                          label="Необхідна компанія відсутня"
-                                                          type="checkbox"
-
-                                                />
-                                            </div>
-                                        </div>
-
-                                        {/*  SHOP  */}
-                                        <div>
-                                            {
-                                                (this.state.hasShopChecked == false && !this.state.hasCompanyChecked) && (
-                                                    <Field
-                                                        name="shopId"
-                                                        component={renderDropdownList}
-                                                        data= {this.state.selectShop.shops}
-
-                                                        //data={cComp}
-                                                        valueField="id"
-                                                        textField="name"
-                                                        placeholder="Оберіть адресу магазину"
-                                                        //{this.state.isCityNotInList == true && (`default`)}
-                                                    />
-
-                                                )
-                                            }
-
-
-                                            {
-                                                !(this.state.hasShopChecked == false && !this.state.hasCompanyChecked) && (
-                                                    <Field
-                                                        name="shopOther"
-                                                        component={renderTextField}
-                                                        valueField="id"
-                                                        type="text"
-                                                        textField="name"
-                                                        placeholder="Адреса магазину"/>
-                                                )
-                                            }
-                                            <div className="box-select-city">
-                                                <CheckBox name="samsungCity"
-                                                          defaultChecked={this.state.hasShopChecked}
-                                                    //value={this.state.hasShopChecked}
-                                                          onChange={()=> {
-                                                              this.setState({
-                                                                  hasShopChecked: !this.state.hasShopChecked
-                                                              })
-                                                          }}
-                                                          answerId = "sec"
-                                                          label="Необхідна адреса відсутня"
-                                                          type="checkbox"
-
-                                                />
-                                            </div>
-                                        </div>
-
-                                        {/* phone */}
-                                        <div>
-                                            {
-                                                this.state.telephoneForGhost == true &&(
-                                                    <Field normalize={normalizePhoneForGhost}
-                                                           name="phone"
-                                                           type="text"
-                                                           component={renderTextField}
-                                                           placeholder="Телефон"/>
-                                                )
-                                            }
-
-                                            {
-                                                this.state.telephoneForGhost == false && (
-                                                    <Field normalize={normalizePhone}
-                                                           name="phone"
-                                                           type="text"
-                                                           component={renderTextField}
-                                                           placeholder="Телефон"/>
-                                                )
-                                            }
-
-                                            <CheckBox name="samsungCity"
-                                                      defaultChecked={this.state.telephoneForGhost}
-                                                      onChange={()=> {
-                                                          this.setState({
-                                                              telephoneForGhost: !this.state.telephoneForGhost
-                                                          })
-                                                      }}
-                                                      answerId = "third"
-                                                      label="Гість"
-                                                      type="checkbox"
-                                            />
-
-                                        </div>
-
-
-
-
-
-                                        {
-                                            this.state.samsungPlusChecked == true && (
-                                                <Field name="samsungPlusLogin" type="text" component={renderTextField}
-                                                       placeholder="samsungPlusEmail"/>
-                                            )
-                                        }
-
-                                        <CheckBox name="samsungPlus"
-                                                  answerId = "sumsung"
-                                                  value={this.state.samsungPlusChecked}
-
-                                                  onChange={()=>{this.setState({
-                                                      samsungPlusChecked: !this.state.samsungPlusChecked
-                                                  })}}
-                                                  defaultChecked={!this.state.samsungPlusChecked}
-                                                  label="У мене немає аккаунт SAMSUNG+"
-                                                  type="checkbox"
-
-                                        />
-
-                                    </div>
-
-
-                                {
-                                    this.state.regPage == 1 ? (
-                                        <Button type={'white'} onClick={::this.nextStepReg}>
-                                            далі
-                                        </Button>
-                                    ):(
-                                        <Button type={'white'} onClick={::this.nextStepReg}>
-                                            назад
-                                        </Button>
-                                    )
-                                }
-
-
-                                {
-                                    !!user.errorRegister && (
-
-                                        <div className="error-holder">
-                                            {user.errorRegister}
-                                        </div>
-                                    )
-                                }
+                                        )
+                                    }
 
 
                             </Register>
                         )
+                    }
+                {
+                    loginType == 'registerIndexPage' && (
 
+                        <Register title="Реєстрація"
+                                  description=""
+                                  buttonText="Зареєструватися"
+                                  customFormName="registerForm"
+                                  onSubmit={::this.submitRegister}
+                                  key="step2">
+
+
+                            <div className={`form-wr ${this.state.regPage == 1 ? 'opened' : ''}`}>
+                                <Field name="name" type="text" component={renderTextField} placeholder="Имя"/>
+
+                                <Field name="email" type="text" component={renderTextField}
+                                       placeholder="E-mail"/>
+                                <Field name="password" type="password" component={renderTextField}
+                                       placeholder="Пароль"/>
+                                <Field name="repeatPassword" type="password" component={renderTextField}
+                                       placeholder="Підтвердити пароль"/>
+                            </div>
+                            <div className={`form-wr ${this.state.regPage == 2 ? 'opened' : ''}`}>
+                                <Field name="position"
+                                       type="text"
+                                       component={renderTextField}
+                                       placeholder="Посада"/>
+                                {/*  samsungCity */}
+                                <div>
+                                    {
+                                        this.state.isCityNotInList == false && (
+                                            <Field
+                                                name="cityId"
+                                                component={renderDropdownList}
+                                                data={cities}
+                                                valueField="id"
+                                                textField="name"
+                                                placeholder="Оберіть місто"/>
+
+                                        )
+                                    }
+                                    {
+                                        this.state.isCityNotInList == true && (
+                                            <Field
+                                                name="cityOther"
+                                                component={renderTextField}
+                                                type="text"
+                                                placeholder="Оберіть місто"/>
+                                        )
+                                    }
+
+                                    <div className="box-select-city">
+                                        <CheckBox name="samsungCity"
+                                                  defaultChecked={this.state.isCityNotInList}
+                                                  onChange={()=> {
+                                                      this.setState({
+                                                          isCityNotInList: !this.state.isCityNotInList,
+                                                          hasShopChecked: !this.state.hasShopChecked
+                                                      })
+                                                  }}
+                                                  answerId = "fourth"
+                                                  label="Необхідна адреса відсутня"
+                                                  type="checkbox"
+
+                                        />
+                                    </div>
+                                </div>
+
+
+                                {/*  COMPANY   */}
+                                {/*  <Field
+                                 name="companyId"
+                                 component={renderDropdownList}
+                                 data={companies}
+                                 defaultValue={[]}
+                                 valueField="id"
+                                 textField="name"
+                                 placeholder="Оберіть компанію"
+                                 />   */}
+                                <div>
+                                    {
+                                        this.state.hasCompanyChecked == false && (
+
+                                            <Field
+                                                name="companyName"
+                                                component={renderDropdownListSaveChange}
+                                                data={companies}
+                                                valueField="id"
+                                                textField="name"
+                                                placeholder="Оберіть назву магазину"
+                                                valueCurrent={shopNameValue}
+                                                onChange={value => this.setState({selectShop: value})}
+                                                //onChange={::this.saveShop}
+                                            />
+                                        )
+                                    }
+                                    {
+                                        this.state.hasCompanyChecked == true && (
+                                            <Field
+                                                name="companyOther"
+                                                component={renderTextField}
+
+                                                valueField="id"
+                                                type="text"
+                                                textField="name"
+
+                                                placeholder="Оберіть компанію"/>
+                                        )
+                                    }
+                                    <div className="box-select-city">
+                                        <CheckBox name="samsungCompany"
+                                                  value={this.state.hasCompanyChecked}
+                                                  onChange={()=> {
+                                                      this.setState({
+                                                          hasCompanyChecked: !this.state.hasCompanyChecked
+                                                      })
+                                                  }}
+                                                  answerId = "first"
+                                                  label="Необхідна компанія відсутня"
+                                                  type="checkbox"
+
+                                        />
+                                    </div>
+                                </div>
+
+                                {/*  SHOP  */}
+                                <div>
+                                    {
+                                        (this.state.hasShopChecked == false && !this.state.hasCompanyChecked) && (
+                                            <Field
+                                                name="shopId"
+                                                component={renderDropdownList}
+                                                data= {this.state.selectShop.shops}
+
+                                                //data={cComp}
+                                                valueField="id"
+                                                textField="name"
+                                                placeholder="Оберіть адресу магазину"
+                                                //{this.state.isCityNotInList == true && (`default`)}
+                                            />
+
+                                        )
+                                    }
+
+
+                                    {
+                                        !(this.state.hasShopChecked == false && !this.state.hasCompanyChecked) && (
+                                            <Field
+                                                name="shopOther"
+                                                component={renderTextField}
+                                                valueField="id"
+                                                type="text"
+                                                textField="name"
+                                                placeholder="Адреса магазину"/>
+                                        )
+                                    }
+                                    <div className="box-select-city">
+                                        <CheckBox name="samsungCity"
+                                                  defaultChecked={this.state.hasShopChecked}
+                                            //value={this.state.hasShopChecked}
+                                                  onChange={()=> {
+                                                      this.setState({
+                                                          hasShopChecked: !this.state.hasShopChecked
+                                                      })
+                                                  }}
+                                                  answerId = "sec"
+                                                  label="Необхідна адреса відсутня"
+                                                  type="checkbox"
+
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* phone */}
+                                <div>
+                                    {
+                                        this.state.telephoneForGhost == true &&(
+                                            <Field normalize={normalizePhoneForGhost}
+                                                   name="phone"
+                                                   type="text"
+                                                   component={renderTextField}
+                                                   placeholder="Телефон"/>
+                                        )
+                                    }
+
+                                    {
+                                        this.state.telephoneForGhost == false && (
+                                            <Field normalize={normalizePhone}
+                                                   name="phone"
+                                                   type="text"
+                                                   component={renderTextField}
+                                                   placeholder="Телефон"/>
+                                        )
+                                    }
+
+                                    <CheckBox name="samsungCity"
+                                              defaultChecked={this.state.telephoneForGhost}
+                                              onChange={()=> {
+                                                  this.setState({
+                                                      telephoneForGhost: !this.state.telephoneForGhost
+                                                  })
+                                              }}
+                                              answerId = "third"
+                                              label="Гість"
+                                              type="checkbox"
+                                    />
+
+                                </div>
+
+
+
+
+
+                                {
+                                    this.state.samsungPlusChecked == true && (
+                                        <Field name="samsungPlusLogin" type="text" component={renderTextField}
+                                               placeholder="samsungPlusEmail"/>
+                                    )
+                                }
+
+                                <CheckBox name="samsungPlus"
+                                          answerId = "sumsung"
+                                          value={this.state.samsungPlusChecked}
+
+                                          onChange={()=>{this.setState({
+                                              samsungPlusChecked: !this.state.samsungPlusChecked
+                                          })}}
+                                          defaultChecked={!this.state.samsungPlusChecked}
+                                          label="У мене немає аккаунт SAMSUNG+"
+                                          type="checkbox"
+
+                                />
+
+                            </div>
+
+
+                            {
+                                this.state.regPage == 1 ? (
+                                    <Button type={'white'} onClick={::this.nextStepReg}>
+                                        далі
+                                    </Button>
+                                ):(
+                                    <Button type={'white'} onClick={::this.nextStepReg}>
+                                        назад
+                                    </Button>
+                                )
+                            }
+
+
+                            {
+                                !!user.errorRegister && (
+
+                                    <div className="error-holder">
+                                        {user.errorRegister}
+                                    </div>
+                                )
+                            }
+
+
+                        </Register>
+                    )
                 }
+
+
 
                 <div className="btn-wr col switcher">
                     {
