@@ -31,6 +31,7 @@ class updateProfile extends Component {
             isCityNotInList: !!this.props.profile.data.cityOther,
             hasCompanyChecked: !!this.props.profile.data.companyOther,
             hasShopChecked: !!this.props.profile.data.shopOther,
+            hasPositionChecked: false,
             activeName: false,
             submitAnimation: false,
             telephoneForGhost: false,
@@ -59,7 +60,7 @@ class updateProfile extends Component {
         this.setState({page: pageId});
     }
 
-    normalizeValues(object, values = ['cityId', 'companyId', 'shopId']) {
+    normalizeValues(object, values = ['cityId', 'companyId', 'shopId', 'positionId']) {
         console.log(values)
         var obj = {
             ...object
@@ -104,6 +105,10 @@ class updateProfile extends Component {
         else
             normalized['shopId'] = null;
 
+        if (!this.state.hasPositionChecked)
+            normalized['positionOther'] = null;
+        else
+            normalized['positionId'] = null;
 
 
         const step = this.props.profile.step;
@@ -119,7 +124,7 @@ class updateProfile extends Component {
         //submitAnimation()
 
         //temp
-        console.log(normalized, step);
+        console.log('normalized', normalized, step);
         this.props.actions.setStudentProfile({
             ...normalized,
             lessonId: this.props.lessons.selectedLesson,
@@ -130,12 +135,12 @@ class updateProfile extends Component {
     }
 
     render() {
-        //    if(this.props.dic.data.length === 0) return;
+
 
         const currentStep = this.props.profile.step;
 
         const {page} = this.state;
-        const {shops, cities, companies} = this.props.dic.data;
+        const {shops, cities, companies, positions} = this.props.dic.data;
 
 
         const currentCompany = this.props.profile.data.companyId || 0;
@@ -445,9 +450,16 @@ class updateProfile extends Component {
                                         <WizardStep title="посада" description="" onSubmit={::this.submitStep}
                                                     key="step7">
 
+                                            <Field
+                                                name="positionId"
+                                                component={renderDropdownList}
+                                                data={positions}
+                                                valueField="id"
+                                                textField="text"
+                                                placeholder="Оберіть позицію"/>
 
-                                            <Field name="position" type="text" component={renderTextField}
-                                                   placeholder="Посада"/>
+
+
                                             <div
                                                 className={`submit-text ${this.state.submitAnimation == true ? 'active' : 'inactive'}`}>
                                                 Збережено! Очікуйте наступний крок.

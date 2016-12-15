@@ -31,6 +31,7 @@ class Account extends Component {
             isCityNotInList: !!this.props.profile.data.cityOther,
             hasCompanyChecked: !!this.props.profile.data.companyOther,
             hasShopChecked: !!this.props.profile.data.shopOther,
+            hasPositionChecked: false,
             listNote: true,
             currentNote: 0,
             openNote: false,
@@ -90,15 +91,17 @@ class Account extends Component {
 
     }
 
-    normalizeValues(object, values = ['cityId', 'companyId', 'shopId']){
+    normalizeValues(object, values = ['cityId', 'companyId', 'shopId', 'positionId']){
         var obj = {
             ...object
         };
+
         for (let key in obj){
             if(values.includes(key) && obj[key] !== null && typeof obj[key] === 'object' ){
                 obj[key] = obj[key].id;
             }
         }
+        console.log('objobjobjobjv', obj)
         return obj;
     }
 
@@ -129,14 +132,19 @@ class Account extends Component {
         else
             normalized['shopId'] = null;
 
+        if (!this.state.hasPositionChecked)
+            normalized['positionOther'] = null;
+        else
+            normalized['positionId'] = null;
 
 
+        console.log('normalized',normalized, ...normalized)
         this.props.actions.setStudentProfile({
-
             ...normalized
-
         });
-        console.log(result);
+
+        //console.log(result);
+
         this.setState({
             editorView: false
         });
@@ -192,7 +200,7 @@ class Account extends Component {
         const shopNameValue = this.state.selectShop.name;
         const arrNotes = this.props.notes.data;
 
-        const { cities, companies} = this.props.dic.data;
+        const { cities, companies, positions} = this.props.dic.data;
         const { account} = this.props;
         const {name, position, phone, companyId, companyOther, email, shopId, shopOther, shopsNew, cityId, cityOther, streetType, street, building, buildingSection, appartment, samsungPlusLogin} = this.props.profile.data;
         //const cComp = [];
@@ -336,10 +344,14 @@ class Account extends Component {
                                                                    component={renderTextField}
                                                                    placeholder="Ваше ім'я"/>
 
-                                                            <Field name="position"
-                                                                   type="text"
-                                                                   component={renderTextField}
-                                                                   placeholder="Посада"/>
+                                                            <Field
+                                                                name="positionId"
+                                                                component={renderDropdownList}
+                                                                data={positions}
+                                                                valueField="id"
+                                                                textField="text"
+                                                                placeholder="Оберіть позицію"/>
+
 
                                                             {/*  COMPANY   */}
                                                             {/*  <Field

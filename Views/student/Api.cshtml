@@ -1,0 +1,402 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.CmsSetPage("student");
+    Html.SetBodyClass("");
+}
+
+
+
+
+
+
+
+@*STUDENT
+<br /><br />
+<b>API:</b>
+
+
+
+<br /><br /><br />
+========================= AUTH =============================
+<br /><br />
+
+@*<u>GET /webapi/auth/status</u>
+<br />return:
+<br />{ isAuth (bool), user: { id, name, role } }
+<br /><br /><br />*@
+
+
+@*STUDENT
+    <br /><br />
+    <b>API:</b>
+
+
+
+    <br /><br /><br />
+    ========================= AUTH =============================
+    <br /><br />
+
+    @*<u>GET /webapi/auth/status</u>
+    <br />return:
+    <br />{ isAuth (bool), user: { id, name, role } }
+    <br /><br /><br />*@
+
+
+<u>POST /webapi/auth/logon</u>
+<br/>{ Email, Password, LessonId (not required) }
+<br/>return:
+<br/>{ error = "invalid" } | { id, name, role }
+<br/><br/><br/>
+
+
+<u>POST /webapi/auth/isEmailAvailable</u>
+<br/>{ email }
+<br/>return:
+<br/>{ isAvailable (bool) }
+<br/><br/><br/>
+
+
+<u>POST /webapi/auth/register</u>
+<br/>{ name, email, password, role (string. only "student" available) }
+<br/>return:
+<br/>{ error = "invalid" } | { user: { id, name, role } }
+
+<u>POST /webapi/auth/changePassword</u>
+<br/>{ oldPassword, newPassword }
+<br/>return:
+<br/>{ success(bool), error = null|"invalid" }
+
+<u>POST /webapi/auth/sendResetPasswordMail</u>
+<br/>{ email }
+<br/>return:
+<br/>{ success(bool), error = null|"invalid" }
+
+<u>POST /webapi/auth/isPasswordResetUIDValid</u>
+<br/>{ uid }
+<br/>return:
+<br/>{ isValid (bool) }
+
+<u>POST /webapi/auth/resetPassword</u>
+<br/>{ uid, password }
+<br/>return:
+<br/>{ success(bool), error = null|"invalid" }
+
+
+<br/><br/><br/><br/>
+========================= PROFILE =============================
+<br/><br/>
+
+
+<u>GET /webapi/profile/getStudentProfile</u>
+<br/>return:
+<br/>{
+    profile = {
+        positionId,
+        phone,
+        companyId,
+        companyOther,
+        shopId,
+        shopOther,
+        cityId,
+        cityOther,
+        streetType,
+        street,
+        building,
+        buildingSection,
+        appartment,
+        samsungPlusLogin
+    }
+}
+<br/><br/><br/>
+
+<u>POST /webapi/profile/setStudentProfile</u>
+<br/>{ positionId, companyId, companyOther, shopId, shopOther, phone, cityId, cityOther, streetType, street, building, buildingSection, appartment, samsungPlusLogin, lessonId (if on lesson), step (if on lesson) }
+<br/>return:
+<br/>{ added (bool) }
+<br/><br/><br/>
+
+
+<u>POST /webapi/profile/setStudentProfileField</u>
+<br/>{ field, value }
+<br/>return:
+<br/>{ }
+NOT YET IMPLEMENTED
+
+<br/><br/><br/><br/>
+
+<u>GET /webapi/profile/getStudentTotalScore</u>
+return:
+<br/>{testScore, samsungPlusScore, salesScore, samsungPlusPlusScore, prizesSpentScore, scoreBalance}
+<br/><br/><br/>
+========================= LESSON =============================
+<br/><br/>
+
+
+<u>GET /webapi/lesson/getActiveLessons</u>
+<br/>return:
+<br/>{
+    lessons : [{
+        id,
+        sDate,
+        eDate,
+        lessonInfo : {id, title, description},
+        room : {id, name}
+    }]
+}
+<br/><br/><br/>
+
+<u>POST /webapi/lesson/joinLesson</u>
+<br/>{ lessonId }
+<br/>return:
+<br/>{
+    isAuthComplete (bool)
+}
+<br/><br/><br/>
+
+
+<u>GET /webapi/lesson/getLessonStatus</u>
+in: lessonId
+<br/>return:
+<br/>{
+    id,
+    isActive,
+    step (see full list in '/webapi/lesson/setLessonStep' method doc),
+    activeTestId
+}
+<br/><br/><br/>
+
+<u>GET /webapi/test/getActiveTest</u>
+<br/>{ lessonId }
+<br/>return:
+<br/>{
+    test : {
+    id,
+    title,
+    timeLimit,
+    score,
+    questions = [{
+        id,
+        text,
+        type,
+        selectList = [{value,text}]
+    }],
+    answers = [{
+        questionId,
+        values,
+        isCorrect
+    }]
+}
+<br/><br/><br/>
+
+<u>POST /webapi/test/submitAnswer</u>
+<br/>{ lessonId, questionId, values[] }
+<br/>return:
+<br/>{ isCorrect }
+
+<u>POST /webapi/lesson/saveNote</u>
+<br/>{ lessonId, text }
+<br/>return:
+<br/>{ }
+
+<u>GET /webapi/lesson/getLessonNote</u>
+<br/>{ lessonId }
+<br/>return:
+<br/> {text}
+
+<u>GET /webapi/lesson/getNotes</u>
+<br/>return:
+<br/> [{title, date, text},...]
+
+<u>GET /webapi/test/getStudentScore</u>
+in: lessonTestId
+out:
+<br/>{
+score,
+totalCorrect
+}
+<br/><br/><br/>
+<br/><br/><br/><br/>
+
+
+========================= LESSON++ =============================
+<br /><br />
+
+
+<u>GET /webapi/lesson/getPlusPlusActiveCourses</u>
+<br />return:
+<br />
+{
+    courses : [
+        {
+            id
+            title,
+            completed(boolean),
+            lessons : [{
+                    id,
+                    sDate,
+                    eDate,
+                    presentationUrl,
+                    lessonInfo : {id, title, description},
+                    completed(boolean)
+                }]
+       }, ...
+   ]
+}
+<br /><br /><br />
+
+<u>POST /webapi/lesson/joinPlusPlusLesson</u>
+<br />{ lessonId }
+<br /><br /><br />
+
+<u>POST /webapi/test/startPlusPlusTest</u>
+<br />{ lessonId }
+<br /><br /><br />
+
+<u>POST /webapi/test/submitPlusPlusAnswer</u>
+<br />{ testId, questionId, values[] }
+<br />return:
+<br />{ isCorrect } || {error = "no_active_test"}
+
+<br /><br /><br />
+========================= DICTIONARIES =============================
+<br/><br/>
+
+
+<u>GET /webapi/dictionary/all</u>
+<br/>return:
+<br/>{
+    cities :[{
+        id,
+        name
+    }],
+    companies : [{
+        id,
+        name,
+        shops : [{id,name,companyId}]
+    }],
+    productCategories : [{
+        id,
+        name,
+        products : [{id, name, categoryId}] 
+    }],
+    positions: [{id, text}]
+}
+<br/><br/><br/>
+
+========================= TEST WORKFLOW =============================
+<br/><br/><br/>
+1) get lessons list
+$.get('/webapi/lesson/getActiveLessons')
+<br/><br/><br/>
+2) join lesson
+$.post('/webapi/lesson/joinLesson', { lessonId : 2})
+store lessonId
+check progress value. redirect if it is not 'begin'
+<br/><br/><br/>
+3) login or register
+$.post('/webapi/auth/register', { name:'dima', email: 'dima@dima.com', password: 'test', role : 'student', lessonId : 2 })<br/>
+or<br/><br/><br/>
+$.post('/webapi/auth/logon', { email: 'dima@dima.com', password: 'test', role : 'student', lessonId : 2 })
+<br/><br/><br/>
+4) get profile
+$.get('/webapi/profile/getStudentProfile')
+<br/><br/><br/>
+5) update profile
+
+========================= NEWS =============================
+<br/><br/>
+
+
+<u>GET /webapi/news/getAll</u>
+<br/>return:
+<br/>[{
+    id,
+    title,
+    description,
+    text,
+    pDate
+}]
+<br/><br/><br/>
+
+<u>GET /webapi/news/get</u>
+<br/>{ id }
+<br/>return:
+<br/>{
+    id,
+    title,
+    description,
+    text,
+    pDate
+}
+<br/><br/><br/>
+
+========================= VIEW SETTINGS =============================
+<br/><br/>
+
+
+<u>GET /webapi/viewSettings/title</u>
+<br/>return:
+<br/>{title}
+<br/><br/><br/>
+
+
+========================= PRIZES =============================
+<br /><br />
+
+
+<u>GET /webapi/prize/getPrizes</u>
+<br />return:
+<br />{id, name, price, availableCount, imageUrl}
+<br /><br /><br />
+
+<u>POST /webapi/prize/makePurchase</u>
+<br />{ prizeId, count }
+<br />return:
+<br />{success = "true|false", error = "invalid|unavailable|too_expensive",}
+<br /><br /><br />
+
+<u>GET /webapi/prize/getStudentPrizes</u>
+<br />return:
+<br />{list: [{date, name, count, price}]}
+<br /><br /><br />
+
+========================= SALES =============================
+<br /><br />
+
+<u>GET /webapi/sale/isCredentialsExist</u>
+<br />return:
+<br />{credentialsExist = true|false }
+<br /><br /><br />
+
+<u>POST /webapi/sale/addSale</u>
+<br />
+{
+    fullName,
+    cityId,
+    cityOther,
+    shopOther,
+    companyOther,
+    shopId,
+    companyId,
+    productId,
+    imei,
+    warrantyImage,
+    checkImage,
+    credentials (optional): {
+        pinImage,
+        passportFirstImage,
+        passportSecondImage,
+        passportThirdImage
+    }
+}
+<br />return:
+<br />{
+    success = "true|false", 
+    errors = 
+    ["invalid_fullname", "invalid_city", "invalid_company", "invalid_shop", "invalid_imei", "invalid_check", "invalid_warranty", "invalid_pin", "invalid_passport_first", "invalid_passport_second", "invalid_passport_third"]
+}
+<br /><br /><br />
+
+<style>
+    body { background: none;overflow-y: scroll; }
+</style>

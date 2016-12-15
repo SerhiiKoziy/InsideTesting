@@ -1,0 +1,223 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.CmsSetPage("student");
+    Html.SetBodyClass("");
+}
+
+
+
+
+<main id="app">
+
+
+
+
+</main>
+
+@section Script {
+    @*<script type="text/javascript" src="/assets/js/student-bundle.js"></script>*@
+<script type="text/javascript" src="student-bundle.js"></script>
+
+   @*<script type="text/javascript" src="~/assets/js/student-bundle.js"></script>*@
+}
+
+
+
+@*STUDENT
+<br /><br />
+<b>API:</b>
+
+
+
+<br /><br /><br />
+========================= AUTH =============================
+<br /><br />
+
+@*<u>GET /webapi/auth/status</u>
+<br />return:
+<br />{ isAuth (bool), user: { id, name, role } }
+<br /><br /><br />*@
+
+
+@*<u>POST /webapi/auth/logon</u>
+    <br />{ Email, Password, LessonId (not required) }
+    <br />return:
+    <br />{ error = "invalid" } | { id, name, role }
+    <br /><br /><br />
+
+
+    <u>POST /webapi/auth/isEmailAvailable</u>
+    <br />{ email }
+    <br />return:
+    <br />{ isAvailable (bool) }
+    <br /><br /><br />
+
+
+    <u>POST /webapi/auth/register</u>
+    <br />{ name, email, password, role (string. only "student" available) }
+    <br />return:
+    <br />{ error = "invalid" } | { user: { id, name, role } }
+
+
+
+    <br /><br /><br /><br />
+    ========================= PROFILE =============================
+    <br /><br />
+
+
+    <u>GET /webapi/profile/getStudentProfile</u>
+    <br />return:
+    <br />{
+                    profile = {
+                        position,
+                        phone,
+                        companyId,
+                        shopId,
+                        cityId,
+                        streetType,
+                        street,
+                        building,
+                        buildingSection,
+                        appartment,
+                        samsungPlusLogin
+                    }
+                }
+    <br /><br /><br />
+
+    <u>POST /webapi/profile/setStudentProfile</u>
+    <br />{ position, companyId, shopId, phone, cityId, streetType, street, building, buildingSection (not required), appartment (not required), samsungPlusLogin (not required), lessonId (not required) }
+    <br />return:
+    <br />{ added (bool) }
+    <br /><br /><br />
+
+
+    <u>POST /webapi/profile/setStudentProfileField</u>
+    <br />{ field, value }
+    <br />return:
+    <br />{ }
+
+    <br /><br /><br /><br />
+    ========================= LESSON =============================
+    <br /><br />
+
+
+    <u>GET /webapi/lesson/getActiveLessons</u>
+    <br />return:
+    <br />{
+                    lessons : [{
+                        id,
+                        sDate,
+                        eDate,
+                        lessonInfo : {
+                            id, title, description
+                        },
+                        room : {id, name}
+                    }]
+                }
+    <br /><br /><br />
+
+    <u>POST /webapi/lesson/joinLesson</u>
+    <br />{ lessonId }
+    <br />return:
+    <br />{ progress: "begin|profile|lesson" }
+    <br /><br /><br />
+
+    <br /><br /><br /><br />
+    ========================= TEST =============================
+    <br /><br />
+
+    <u>GET /webapi/test/getActiveTest</u>
+    <br />{ lessonId }
+    <br />return:
+    <br />{
+                    test : {
+                        id,
+                        title,
+                        timeLimit,
+                        score,
+                    questions = [{
+                        id,
+                        text,
+                        type,
+                        selectList = [{
+                            value,
+                            text
+                        }]
+                    }],
+                    answers = [{
+                        questionId,
+                        values,
+                        isCorrect
+                    }]
+                }
+    <br /><br /><br />
+
+    <u>POST /webapi/lesson/submitAnswer</u>
+    <br />{ lessonId, questionId, values[] }
+    <br />return:
+    <br />{ isCorrect }
+
+    <br /><br /><br />
+    <u>GET /webapi/test/getTestStatus</u>
+    <br />{lessonTestId}
+    <br />return:
+    <br />{ isActive (bool) }
+    <br /><br /><br />
+
+
+
+
+
+    <br /><br /><br /><br />
+    ========================= DICTIONARIES =============================
+    <br /><br />
+
+
+    <u>GET /webapi/dictionary/all</u>
+    <br />return:
+    <br />{
+            cities :[{
+                        id,
+                        name
+                    }],
+            shops : [{
+                        id,
+                        name,
+                        cityId
+                    }],
+            companies : [{
+                        id,
+                        name
+                    }]
+        }
+    <br /><br /><br />
+
+    ========================= TEST WORKFLOW =============================
+
+    1) get lessons list
+    $.get('/webapi/lesson/getActiveLessons')
+
+    2) join lesson
+    $.post('/webapi/lesson/joinLesson', { lessonId : 2})
+    store lessonId
+    check progress value. redirect if it is not 'begin'
+
+    3) login or register
+    $.post('/webapi/auth/register', { name:'dima', email: 'dima@dima.com', password: 'test', role : 'student', lessonId : 2 })
+    or
+    $.post('/webapi/auth/logon', { email: 'dima@dima.com', password: 'test', role : 'student', lessonId : 2 })
+
+    4) get profile
+    $.get('/webapi/profile/getStudentProfile')
+
+    5) update profile
+    $.post('/webapi/profile/setStudentProfile', { name : 'dima', email : 'dima@ukr.net', position : 'pos', companyId : 1, shopId : 1, phone : '123', cityId : 1, streetType : 'str type', street : 'str', building : '5', buildingSection : 's', appartment : '45', samsungPlusLogin : 'login', lessonId : 2})
+
+
+    <style>
+        body
+        {
+            background:none;
+        }
+    </style>
+*@

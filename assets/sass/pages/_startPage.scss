@@ -147,7 +147,8 @@
         &:last-of-type{
           border: none;
         }
-        a{
+        a, span{
+          cursor: pointer;
           display: block;
 
         }

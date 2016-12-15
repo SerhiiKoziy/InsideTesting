@@ -72,7 +72,7 @@ export default class AuthForm extends Component {
     }
 
     submitRegister(result) {
-        console.log(result)
+        console.log('result submit', result)
         this.props.actions.register({
 
             ...result,
@@ -84,7 +84,7 @@ export default class AuthForm extends Component {
     render() {
         const {type:loginType, forgot, root} = this.props;
         const {user} = this.props;
-        const { cities, companies} = this.props.dic.data;
+        const { cities, companies, positions} = this.props.dic.data;
         const shopNameValue = this.state.selectShop.name;
 
 
@@ -117,8 +117,6 @@ export default class AuthForm extends Component {
                                         </div>
                                     )
                                 }
-
-
                             </Login>
 
                     )
@@ -180,10 +178,14 @@ export default class AuthForm extends Component {
                                        placeholder="Підтвердити пароль"/>
                             </div>
                             <div className={`form-wr ${this.state.regPage == 2 ? 'opened' : ''}`}>
-                                <Field name="position"
-                                       type="text"
-                                       component={renderTextField}
-                                       placeholder="Посада"/>
+                                <Field
+                                    name="positionsId"
+                                    component={renderDropdownList}
+                                    data={positions}
+                                    valueField="id"
+                                    textField="text"
+                                    placeholder="Оберіть позицію"/>
+
                                 {/*  samsungCity */}
                                 <div>
                                     {

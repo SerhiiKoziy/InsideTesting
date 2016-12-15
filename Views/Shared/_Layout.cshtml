@@ -1,0 +1,47 @@
+﻿@using Bs.Cms.Repository
+@{
+    Layout = "~/Views/Shared/_CmsLayout.cshtml";
+}
+
+@section Header
+{
+    @{
+        Html.CmsSetPageVar("trackingCodeUser", Html.CmsIsAuthenticated() ? string.Format("{{ 'userId': '{0}' }}", Html.CmsGetUser().Id) : "'auto'");
+    }
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes">
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    @Styles.Render("~/assets/bundlecss/app")
+    @RenderSection("Style", required: false)
+    
+    @if (ViewBag.BackGroundUrl != null)
+    {
+        <style type="text/css">
+         body {
+            background-image: url(@ViewBag.BackGroundUrl) !important
+         }
+        </style>
+    }
+}
+
+@RenderBody()
+
+@{ 
+    var device = Bs.WebApp.Features.DeviceSession.GetFromRequestBase(Request);
+}
+<div style="position:fixed;bottom:0;left:0;float:left;background:#fff;padding:3px;">
+    UID: @device.SessionUID
+</div>
+
+
+@Scripts.Render("~/assets/bundlejs/front")
+@Scripts.Render("~/assets/bundlejs/app")
+@Bs.Cms.DynamicBundles.DynamicBundles.RenderPageScripts(ViewContext.View)
+
+@RenderSection("Script", false)
