@@ -33,9 +33,9 @@ export const validate = values => {
     if (!values.companyId || !values.companyId) {
         errors.companyId = "Оберіть компанію"
     }
-    if (values.shopId === null || !values.shopId)  {
+    /*if (values.shopId === null || !values.shopId)  {
         errors.shopId = "Оберіть адресу магазину"
-    }
+    }*/
 
     if (values.cityId === null || !values.cityId) {
         errors.cityId = "Оберіть місто"

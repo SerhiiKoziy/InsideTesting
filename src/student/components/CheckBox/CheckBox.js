@@ -13,7 +13,7 @@ const CheckBox = ({classType, type, onChange, label, answerId ,defaultChecked, n
 CheckBox.propTypes = {
   type: React.PropTypes.string,
   onClick: React.PropTypes.func,
-  label: React.PropTypes.string,
+  //label: React.PropTypes.string,
   //answerId: React.PropTypes.number,
   classType: React.PropTypes.string
 };

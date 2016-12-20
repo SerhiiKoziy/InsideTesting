@@ -9,13 +9,6 @@ class Question extends Component {
             currentAnswers: []
         }
     }
-    //
-    // componentWillReceiveProps(nextProps) {
-    //     // You don't have to do this check first, but it can help prevent an unneeded render
-    //     if (nextProps.questionData !== this.props.questionData) {
-    //         this.setState({currentAnswers: []});
-    //     }
-    // }
 
     addAnswer(values,e ) {
         this.props.onAnswer({
@@ -36,7 +29,6 @@ class Question extends Component {
                 answers = [e.target.value];
                 break;
             case 'select':
-
                 if (e.target.checked) {
                     answers = [answer.text];
                 }

@@ -57,39 +57,37 @@ class Account extends Component {
     }
 
     getParam(array, id, fieldName = 'id') {
+
         return array.filter(function (obj) {
             return obj[fieldName] == id;
         })[0].name
-
+        console.log('getParamFirstresult', result)
     }
-    getParamShopsAdress(arrayCompanies, companyId, shopId, fieldName = 'id') {
-        console.log('companyId', companyId,'shopId', shopId)
-        let arrShops = arrayCompanies.map(item => {
-            if(item.id == companyId){
-               // console.log(item)
-                return item;
-                /*item.shops.map(itemShop => {
-                    if(itemShop.id == shopId){
-                        return itemShop.name
-                    }
-                })*/
+    getParamText(array, id, fieldName = 'id') {
 
-            }
-        }).filter(item => !!item)[0]
-
-        if(arrShops.shops.length > 0){
-            let arr = arrShops.shops;
-            let shopAdrs = arr.map(item => {
-                if(item.id == shopId){
-                    console.log("item",item)
-                }
-            }).filter(item => !!item)[0]
-
-            //console.log(arrShops, arrShops.shops, 'shopAdrs', shopAdrs)
-        }
-
-
+        return array.filter(function (obj) {
+            return obj[fieldName] == id;
+        })[0].text
+        console.log('getParamresult', result)
     }
+
+
+    getParamShop(array, idShop, fieldName = 'id') {
+
+       // let companyId = this.props.profile.data.companyId;
+        let companyId ;
+        console.log('array, idCompany, idShop', array, companyId, idShop);
+        let firstAArr = array.filter(function (obj) {
+            return obj[fieldName] == companyId;
+        })
+
+        console.log('firstAArr', firstAArr, idShop)
+        /*let shop = firstAArr.filter(function (obj) {
+            return obj[fieldName] == idShop;
+        })[0]
+        console.log('shopshop', shop)*/
+    }
+
 
     normalizeValues(object, values = ['cityId', 'companyId', 'shopId', 'positionId']){
         var obj = {
@@ -101,7 +99,7 @@ class Account extends Component {
                 obj[key] = obj[key].id;
             }
         }
-        console.log('objobjobjobjv', obj)
+        console.log('objobjobjobjv111', obj)
         return obj;
     }
 
@@ -114,7 +112,7 @@ class Account extends Component {
     }
     submitEdit(result) {
 
-
+        console.log('objobjobjobjv', result)
         const normalized = this.normalizeValues(result);
 
         if (!this.state.isCityNotInList)
@@ -165,12 +163,8 @@ class Account extends Component {
         const companyId = this.props.profile.data.companyId || 1;
         let companies = this.props.dic.data.companies;
 
-        //var currentAdress = companies[companyId].shops;
-       // return currentAdress
-
 
     }
-    //filter companies for view (adress shops)
     filterCompanies(){
 
     }
@@ -198,13 +192,13 @@ class Account extends Component {
         var self = this;
         const arrNews = this.props.news.data;
         const shopNameValue = this.state.selectShop.name;
+        const shopAdressValue = this.state.selectShopAdress.name;
         const arrNotes = this.props.notes.data;
 
         const { cities, companies, positions} = this.props.dic.data;
         const { account} = this.props;
-        const {name, position, phone, companyId, companyOther, email, shopId, shopOther, shopsNew, cityId, cityOther, streetType, street, building, buildingSection, appartment, samsungPlusLogin} = this.props.profile.data;
-        //const cComp = [];
-        //console.log('cComp1 :', cComp);
+        const {name, positionId, phone, companyId, companyOther, email, shopId, shopOther, shopsNew, cityId, cityOther, streetType, street, building, buildingSection, appartment, samsungPlusLogin} = this.props.profile.data;
+
 
         if(account.boughtPresent){
             console.log('00000')
@@ -214,12 +208,11 @@ class Account extends Component {
                  const cComp1 = companies.map( item => {
                      for(var id in item){
                          if(item[id] == companyId){
-                            //console.log("12312312312", item, item[id], companyId, item.shops)
                             return item.shops
                          }
                      }
                  }).filter( item => !!item);
-                 //console.log('cComp2 :', cComp1);
+
         }
 
         return (
@@ -248,8 +241,10 @@ class Account extends Component {
 
                                                     <p><b>{name}</b></p>
 
-                                                    {position  && (
-                                                        <p> {position}</p>
+                                                    {positionId  && (
+                                                        <p>
+                                                            {positionId == null ? null : this.getParamText(positions, positionId)}
+                                                        </p>
                                                     )
                                                     }
 
@@ -264,12 +259,8 @@ class Account extends Component {
 
                                                     {(shopId || shopOther) &&(
                                                         <p>
+                                                            {/*shopId == null ? shopOther : this.getParamShop(companies, shopId)*/}
 
-                                                            {/*{shopNameValue||shopOther} this.getParamShopsAdress(companies, companyId, shopId)*/}
-                                                            {/*<span>{shopId == null ? shopOther : this.getParamShopsAdress(companies, companyId, shopId)} </span>*/}
-
-                                                            {/*shopId == null ? shopOther : this.getParam(companies[currentCompany].shops, shopId)*/}
-                                                            {/*this.getParam(companies[currentCompany].shops, shopId)*/}
                                                         </p>
                                                     )
                                                     }
@@ -277,11 +268,7 @@ class Account extends Component {
                                                     {cities && (cityId || cityOther)  && (
                                                         <p>
                                                             <span>{cityId == null ? cityOther : this.getParam(cities, cityId)} </span>
-                                                            {/*<span>{streetType}</span>
-                                                             <span>{street}</span>,
-                                                             <span>{building}</span>,
-                                                             <span>{appartment}</span>,
-                                                             <span>{buildingSection}</span>*/}
+
 
                                                         </p>
                                                     )
@@ -369,7 +356,7 @@ class Account extends Component {
                                                                 {
                                                                     this.state.hasCompanyChecked == false && (
                                                                         <Field
-                                                                            name="companyName"
+                                                                            name="companyId"
                                                                             component={renderDropdownListSaveChange}
                                                                             data={companies}
                                                                             valueField="id"
@@ -379,6 +366,8 @@ class Account extends Component {
                                                                             onChange={value => this.setState({selectShop: value})}
                                                                             //onChange={::this.saveShop}
                                                                         />
+
+
                                                                     )
                                                                 }
                                                                 {
@@ -386,11 +375,9 @@ class Account extends Component {
                                                                         <Field
                                                                             name="companyOther"
                                                                             component={renderTextField}
-
                                                                             valueField="id"
                                                                             type="text"
                                                                             textField="name"
-
                                                                             placeholder="Оберіть компанію"/>
                                                                     )
                                                                 }
@@ -427,18 +414,27 @@ class Account extends Component {
                                                                 {
                                                                     (this.state.hasShopChecked == false && !this.state.hasCompanyChecked) && (
 
+                                                                    <Field
+                                                                        name="shopId"
+                                                                        component={renderDropdownList}
+                                                                        data= {this.state.selectShop.shops}
 
-                                                                        <Field
-                                                                            name="companyName"
+                                                                        valueField="id"
+                                                                        textField="name"
+                                                                        placeholder="Оберіть адресу магазину"
+                                                                        //{this.state.isCityNotInList == true && (`default`)}
+                                                                    />
+                                                                        /*<Field
+                                                                            name="shopId"
                                                                             component={renderDropdownListSaveChange}
                                                                             data={this.state.selectShop.shops}
                                                                             valueField="id"
                                                                             textField="name"
                                                                             placeholder="Оберіть адресу магазину"
-                                                                            valueCurrent={this.state.selectShopAdress.shops}
+                                                                            valueCurrent={shopAdressValue}
                                                                             onChange={value => this.setState({selectShopAdress: value})}
                                                                             //onChange={::this.saveShop}
-                                                                        />
+                                                                        />*/
 
                                                                     )
                                                                 }
@@ -859,28 +855,6 @@ class Account extends Component {
                                                     })}
 
 
-
-
-                                                    {/*<ul>
-                                                        <li>
-                                                            <a href=""></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href=""></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href=""></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href=""></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href=""></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href=""></a>
-                                                        </li>
-                                                    </ul>*/}
                                                 </div>
                                             )
 

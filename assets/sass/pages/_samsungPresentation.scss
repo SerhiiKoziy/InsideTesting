@@ -1,103 +1,161 @@
 $blue: #00b3e3;
 
-.samsung-presentation{
+.samsung-presentation {
   display: flex;
+  .pdf-wr {
+    height: 80%;
+    &.large-view {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      transition: 0.6s left;
+      &.active{
+        left:0;
+      }
+      .insidePdfWr {
+        height: 100%;
+        position: relative;
+        canvas {
+          width: 100% !important;
+          max-height: 100%;
+        }
+        nav{
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          transform: translate(-50%, 0);
+        }
+        .close-presentation{
+          position: absolute;
+          right: 40px;
+          top: 40px;
+          height: 50px;
+          width: 50px;
+          cursor: pointer;
+          background: rgb(54, 142, 224);
+
+          display: flex;
+          align-items: center;
+          text-align: center;
+          box-sizing: border-box;
+          transition: 0.4s all;
+          &:hover{
+            background: #449ef2;
 
 
-  .presentation-wr{
-      position: relative;
-      flex-basis: 50%;
-      padding: 60px;
-      box-sizing: border-box;
-      .pdf-wr{
-        height: 80%;
-        .insidePdfWr{
-          canvas{
-            width: 100% !important;
-            max-height: 50vh;
           }
+          span{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: url("../images/close-note.svg");
+            background-size: 100%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
 
-          nav{
-            .pager{
-              display: flex;
-              li{
+    }
+    .insidePdfWr {
+      canvas {
+        width: 100% !important;
+        max-height: 50vh;
+      }
 
-                &.disabled{
-                  .btn{
-                    cursor: default;
-                    background: #b5b5b5;
-                    &:hover{
-                      background: #b5b5b5;
-                    }
-                  }
+      nav {
+        .pager {
+          display: flex;
+          li {
+
+            &.disabled {
+              .btn {
+                cursor: default;
+                background: #b5b5b5;
+                &:hover {
+                  background: #b5b5b5;
                 }
-              }
-              .previous{
-                padding: 0 20px 0 0;
-              }
-              .next{
-
               }
             }
           }
+          .previous {
+            padding: 0 20px 0 0;
+          }
+          .next {
+
+          }
         }
       }
-    .btn{
-      &.disabled{
+    }
+  }
+  .presentation-wr {
+    position: relative;
+    flex-basis: 50%;
+    padding: 60px;
+    box-sizing: border-box;
+    padding-top: 10px;
+    .buttons-presentation {
+      display: flex;
+      justify-content: space-between;
+      .btn {
+        &.disabled {
 
           cursor: default;
           background: #b5b5b5;
-          &:hover{
+          &:hover {
             background: #b5b5b5;
           }
 
-      }
-    }
-
-      p{
-        &:first-child{
-          font-size: 1.3rem;
-          line-height: 1.125;
-          font-weight: 600;
         }
       }
-
     }
 
 
+    p {
+      &:first-child {
+        font-size: 1.3rem;
+        line-height: 1.125;
+        font-weight: 600;
+      }
+    }
 
+  }
 
-  .notes-wr{
+  .notes-wr {
     flex-basis: 50%;
     padding: 60px;
     box-sizing: border-box;
     background-color: #f4f4f4;
 
     font-family: "SFUIDisplayBlack";
-    .btn--main{
+    .btn--main {
       width: 180px;
       margin: 0;
     }
-    .notesPopup{
+    .notesPopup {
       position: relative;
       flex-basis: 100%;
-      h5{
+      h5 {
         color: $blue;
         margin: 0 0 30px 0;
       }
-      .btn--main{
+      .btn--main {
         position: absolute;
         right: 0;
         width: 53px;
       }
 
-      .save-btn{
+      .save-btn {
         background-color: #00b3e3;
         display: inline-block;
         padding: 0 10px;
         box-sizing: border-box;
         cursor: pointer;
-        span{
+        span {
           color: #fff;
           line-height: 53px;
         }
@@ -105,21 +163,29 @@ $blue: #00b3e3;
           background: #009fca;
         }
       }
-      .submit-text{
+      .submit-text {
         left: 0;
         padding: 10px 0;
         color: #00A000;
         width: 100%;
-        &.active{
-          animation: shadow  5s infinite linear;
+        &.active {
+          animation: shadow 5s infinite linear;
         }
         @keyframes shadow {
-          0% {opacity: 0;}
-          25% {opacity: 1;}
-          75% {opacity: 1;}
-          100% {opacity: 0;}
+          0% {
+            opacity: 0;
+          }
+          25% {
+            opacity: 1;
+          }
+          75% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+          }
         }
-        &.inactive{
+        &.inactive {
           display: none;
 
         }

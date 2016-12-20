@@ -34,6 +34,7 @@ class SamsungPresentation extends Component {
             seconds:0,
             addTimer: true,
             lastSowPage: 1,
+            showLargePresentation:false,
         }
         this.onDocumentComplete = this.onDocumentComplete.bind(this);
         this.onPageComplete = this.onPageComplete.bind(this);
@@ -44,7 +45,7 @@ class SamsungPresentation extends Component {
 
         this.props.actions.getLessonsPlusPLus();
         this.click();
-        this.rightClick();
+        //this.rightClick();
 
 
     }
@@ -230,15 +231,6 @@ class SamsungPresentation extends Component {
         if(isLoaded ){
             presentationUrl = this.props.samsungPlusPlus.presentationUrl;
             nameLesson = this.props.samsungPlusPlus.nameLesson;
-
-            /*pdfContainer = <object width="100%"
-                                   height="100%"
-                                   type="application/pdf"
-                                   data={presentationUrl+'?#zoom=&scrollbar=0&toolbar=0&navpanes=0'}>
-
-                    <p>PDF cannot be displayed.</p>
-                </object>;*/
-            /*<embeded src={presentationUrl} width="400" height="500" type="application/pdf"></embeded>;*/
         }
         let pagination = null;
         if (this.state.pages) {
@@ -250,6 +242,26 @@ class SamsungPresentation extends Component {
 
 
             <div className="samsung-presentation test page">
+                <div className={`pdf-wr large-view ${this.state.showLargePresentation ? 'active' : ' '}`} >
+                    {/*pdfContainer*/}
+
+                    <div className="insidePdfWr">
+                        <div className="close-presentation"
+                            onClick={() => {this.setState({showLargePresentation:false})}}>
+                            <span></span>
+                        </div>
+
+                        <PDF
+                            //file="/Content/Entities/LessonInfo/32/ua/presentation.pdf"
+                            file={presentationUrl}
+                            onDocumentComplete={this.onDocumentComplete}
+                            onPageComplete={this.onPageComplete}
+                            page={this.state.page} />
+                        {pagination}
+                    </div>
+                </div>
+
+
                 <div className="timer">
                     <p>
                         <span>00:</span>
@@ -290,11 +302,18 @@ class SamsungPresentation extends Component {
                                     {pagination}
                                 </div>
                             </div>
-                            <Button type={'main'}
-                                    onClick={::this.startTest}
-                                    className={`btn btn--main ${this.state.startTest ? '' : 'disabled'}`}>
-                                почати тест
-                            </Button>
+                            <div className="buttons-presentation">
+                                <Button type={'main'}
+                                        onClick={::this.startTest}
+                                        className={`btn btn--main ${this.state.startTest ? '' : 'disabled'}`}>
+                                    почати тест
+                                </Button>
+                                <Button type={'main'}
+                                        onClick={() => {this.setState({showLargePresentation:true})}}
+                                        className={`btn btn--main`}>
+                                    збільшити презентації
+                                </Button>
+                            </div>
 
 
                         </div>
