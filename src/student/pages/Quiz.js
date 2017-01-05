@@ -148,7 +148,13 @@ class Quiz extends Component {
                     {/**/}
                     <div className={`steps-test ${this.props.params.id === 'result' ? 'disabled' : ''}`}>
 
-                        {/*<input onChange={this.changeHandler} defaultValue={0} type='range' min={0} max={3} />*/}
+                        {/*<input onChange={this.changeHandler} defaultValue={0} type='range' min={0} max={3} />
+                         <div className="slide-info">
+                         <p>123</p>
+                         </div>
+
+                        */}
+
 
                         <Slider  ref='slider' {...sliderSettings}>
 

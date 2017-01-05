@@ -173,7 +173,10 @@ class BuyPresent extends Component {
     submitBuy(result) {
           //console.log(result);
     }
-
+    logout(){
+        this.props.actions.pushRedirect(`/`);
+        this.props.actions.logout();
+    }
 
     render() {
         const account = this.props.account;
@@ -219,6 +222,8 @@ class BuyPresent extends Component {
                     <Link to='/school' activeClassName='active'>smartschool</Link>
                     <Link to='/' activeClassName=''>samsung+</Link>
                     <Link to='/account' activeClassName=''>особистий кабінет</Link>
+
+                    <Link to='/' activeClassName='' onClick={() => this.logout()}>Вийти</Link>
                 </nav>
 
                 {

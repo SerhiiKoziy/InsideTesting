@@ -60,15 +60,15 @@ class Account extends Component {
 
         return array.filter(function (obj) {
             return obj[fieldName] == id;
-        })[0].name
-        console.log('getParamFirstresult', result)
+        })[0].name;
+       // console.log('getParamFirstresult', result)
     }
     getParamText(array, id, fieldName = 'id') {
 
         return array.filter(function (obj) {
             return obj[fieldName] == id;
-        })[0].text
-        console.log('getParamresult', result)
+        })[0].text;
+       // console.log('getParamresult', result)
     }
 
 
@@ -184,6 +184,10 @@ class Account extends Component {
         }
     }
 
+    logout(){
+        this.props.actions.pushRedirect(`/`)
+        this.props.actions.logout();
+    }
 
     render() {
         const scoreMain = this.props.scoreTotal.data;
@@ -223,6 +227,7 @@ class Account extends Component {
                     <Link to='/school' activeClassName='active'>smartschool</Link>
                     <Link to='/samsungLesson' activeClassName=''>samsung+</Link>
                     <Link to='/' activeClassName='active'>особистий кабінет</Link>
+                    <Link to='/' activeClassName='' onClick={() => this.logout()}>Вийти</Link>
 
                 </nav>
 

@@ -47,6 +47,33 @@ export function login({email, password, lessonId}, redirect = null) {
             })
     }
 }
+
+//logout action
+export function logout() {
+    return dispatch => {
+        dispatch(requestLogout());
+        axios.get(API.LOGOUT)
+            .then(function ({data}) {
+                dispatch(receiveLogout(data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+}
+export function requestLogout(payload) {
+    return {
+        type: types.REQUEST_LOGOUT,
+        payload
+    };
+}
+export function receiveLogout(payload) {
+    return {
+        type: types.RECEIVE_LOGOUT,
+        payload
+    };
+}
 export function register(data, redirect = null) {
     return dispatch => {
         dispatch(loginUserRequest());

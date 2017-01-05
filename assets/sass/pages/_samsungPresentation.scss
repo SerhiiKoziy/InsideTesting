@@ -18,9 +18,15 @@ $blue: #00b3e3;
       .insidePdfWr {
         height: 100%;
         position: relative;
+        background: #fff;
+        padding-bottom: 70px;
+        box-sizing: border-box;
         canvas {
-          width: 100% !important;
-          max-height: 100%;
+          width: 80% !important;
+          max-height: 90%;
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, 0);
         }
         nav{
           position: absolute;
@@ -100,8 +106,12 @@ $blue: #00b3e3;
     padding-top: 10px;
     .buttons-presentation {
       display: flex;
-      justify-content: space-between;
+
       .btn {
+        margin: 0 0 20px 0;
+        &:first-child{
+          margin: 0 20px 20px 0;
+        }
         &.disabled {
 
           cursor: default;

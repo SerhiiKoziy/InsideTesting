@@ -26,7 +26,17 @@ const {type, payload} = action;
                 isFetching:false,
                 didInvalidate:false
             };
+        case(types.REQUEST_LOGOUT):
+        {
 
+            return {
+                ...state,
+                ...payload,
+
+                didInvalidate: true,
+            }
+
+        }
         case types.SET_ACTIVE_PROFILE:
             return {
                 ...state,

@@ -63,7 +63,10 @@ class SamsungLesson extends Component {
 
 
     }
-
+    logout(){
+        this.props.actions.pushRedirect(`/`)
+        this.props.actions.logout();
+    }
     render() {
         const isLoaded = this.props.dic.isLoadedLessons;
         let lessons;
@@ -73,17 +76,24 @@ class SamsungLesson extends Component {
             arrCourses = this.props.dic.lessonsPlusPlus.courses;
         }
 
-
+        let invalidate = this.props.dic.didInvalidate;
         return (
             <div className="samsung-lesson test page">
-                {/*<nav className="top-nav">
+                {
+                    !invalidate && (
+                        <nav className="top-nav">
 
-                    <Link to='/' onlyActiveOnIndex={true} activeClassName='active'>Головна</Link>
-                    <Link to='/school' activeClassName='active'>smartschool</Link>
-                    <Link to='/' activeClassName=''>samsung+</Link>
-                    <Link to='/' activeClassName='active'>особистий кабінет</Link>
+                            {/*<Link to='/' onlyActiveOnIndex={true} activeClassName='active'>Головна</Link>
+                             <Link to='/school' activeClassName='active'>smartschool</Link>
+                             <Link to='/' activeClassName=''>samsung+</Link>
+                             <Link to='/' activeClassName='active'>особистий кабінет</Link>*/}
 
-                </nav>*/}
+                            <Link to='/' activeClassName='' onClick={() => this.logout()}>Вийти</Link>
+
+                        </nav>
+                    )
+                }
+
 
 
                         <div className="theme-wr">

@@ -31,6 +31,9 @@ export const TITLE = '/webapi/viewSettings/title';
 //Score
 export const GET_SCORE_TOTAL = '/webapi/profile/getStudentTotalScore';
 
+//LOGOUT
+export const LOGOUT = '/webapi/auth/logout';
+
 //AUTH
 export const LOGON = '/webapi/auth/logon';
 export const IS_EMAIL_AVAILABLE = '/webapi/auth/isEmailAvailable';
