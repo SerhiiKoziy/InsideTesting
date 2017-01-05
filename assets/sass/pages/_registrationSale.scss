@@ -19,6 +19,12 @@ $blue: #00b3e3;
     }
     form{
       max-width: 1080px;
+      position: relative;
+      button{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
     }
 
   }

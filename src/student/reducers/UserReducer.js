@@ -26,6 +26,7 @@ export default function UserReducer(state = INITIAL_STATE, action) {
             }
 
         }
+
         case(types.LOGIN_USER_FAILURE):
         {
 

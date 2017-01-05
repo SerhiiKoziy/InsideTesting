@@ -133,7 +133,7 @@ export default class AuthForm extends Component {
 
 
                                       <div className="">
-                                            <Field name="name" type="text" component={renderTextField} placeholder="Имя"/>
+                                            <Field name="name" type="text" component={renderTextField} placeholder="Им'я"/>
 
                                             <Field name="email" type="text" component={renderTextField}
                                                    placeholder="E-mail"/>
@@ -168,7 +168,7 @@ export default class AuthForm extends Component {
 
 
                             <div className={`form-wr ${this.state.regPage == 1 ? 'opened' : ''}`}>
-                                <Field name="name" type="text" component={renderTextField} placeholder="Имя"/>
+                                <Field name="name" type="text" component={renderTextField} placeholder="Прізвище та ім'я"/>
 
                                 <Field name="email" type="text" component={renderTextField}
                                        placeholder="E-mail"/>

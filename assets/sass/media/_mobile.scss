@@ -49,18 +49,58 @@
 
     aside.right-sidebar.opened{
         //height: 100vh;
-        overflow-y: auto;
+        //overflow-y: auto;
+        z-index: 10;
+    }
+    main .page.registration-sale {
+        padding: 40px 60px;
+        height: calc(100vh - 160px);
+    }
+    main .page.buy-present {
+        padding: 40px 60px;
+        height: calc(100vh - 160px);
+    }
+    main .page.samsung-lesson {
+        height: calc(100vh - 160px);
+    }
+
+    .registration-sale .sale-form form button {
+        bottom: 20px;
     }
     main .route-wr{
-       // min-height: 500px;
         padding: 60px 0 0;
+    }
+    .page.account-page{
+        padding: 0 0 100px 0;
+        box-sizing: border-box;
+        background: transparent;
     }
     .page.start-page .bottom-nav {
         position: absolute;
         //bottom: -60px;
     }
+    .account-page .options-wr{
+        padding: 60px 60px 0 60px;
+    }
+    .account-page .options-wr .tabs-wr .tabs-body>div.third-tab p {
+        margin: 20px 0 0 0;
+    }
+    .account-page .options-wr .tabs-wr .tabs-body{
+        margin: 0;
+    }
+    .account-page .options-wr .tabs-wr .tabs-body>div.fourth-tab .buttons-notes{
+        bottom: 50px;
+    }
     .page.start-page{
-        overflow-Y: auto;
+        //overflow-Y: auto;
+    }
+    .account-page .options-wr .tabs-wr .tabs-body>div.second-tab .table-row div {
+
+        display: flex;
+        align-items: center;
+    }
+    .account-page .options-wr .tabs-wr .tabs-body>div.second-tab .table-row div.productName p{
+        width: 100%;
     }
     .registration-wr{
        // overflow-Y: auto;
@@ -84,11 +124,11 @@
     .registration-wr .first-step .switcher {
         margin-top: 1rem;
     }
-    .samsung-lesson .tests-wr .btn {
-        bottom: 120px;
-    }
     .samsung-presentation .presentation-wr .btn.disabled {
         margin: 0 0 20px 0;
+    }
+    .page.start-page .samsung-wr{
+        padding: 0 60px;
     }
 
 }
@@ -102,8 +142,17 @@
     .page.start-page .samsung-wr{
         padding: 0;
     }
+    .account-page .options-wr .tabs-wr .tabs-header ul li{
+        height: 50px;
+        position: relative;
+    }
     .account-page .options-wr .tabs-wr .tabs-header ul li p{
-        font-size: 0.8rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        line-height: 16px;
     }
     .account-page .info-wr .info-block .buttons-wr .btn--main span {
         font-size: 1rem;
@@ -120,7 +169,9 @@
 }
 
 @media only screen and (max-width: 769px) {
-
+    .samsung-presentation .pdf-wr.large-view .insidePdfWr canvas {
+        width: 100% !important;
+    }
 
     .on-scene-1 {
         top: 70px;
